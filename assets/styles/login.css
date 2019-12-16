@@ -1,4 +1,9 @@
 .sign-in-page,
+.sign-up-page {
+  background-image: var(--unique-color);
+}
+
+.sign-in-page,
 .sign-in-form,
 .sign-in-form__email,
 .sign-in-form__password,

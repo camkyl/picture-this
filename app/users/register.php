@@ -7,6 +7,8 @@ require __DIR__ . '/../autoload.php';
 
 // In this file we register users
 
+// Array containing all error messages
+$_SESSION['errors'] = [];
 
 if (isset($_POST['first-name'], $_POST['last-name'], $_POST['email'], $_POST['password'])) {
     // die(var_dump($_POST));
@@ -17,8 +19,8 @@ if (isset($_POST['first-name'], $_POST['last-name'], $_POST['email'], $_POST['pa
 
     // Connection to database is made in autoload.php and saved in the variable $pdo
 
-    // Preparing SQL query to check if the email or username exist
-    // An email can't be used twice and username is unique
+    // Preparing SQL query to check if the email exist
+    // An email can't be used twice
     $statement = $pdo->prepare('SELECT * FROM users WHERE email = :email');
 
     if (!$statement) {
@@ -40,8 +42,7 @@ if (isset($_POST['first-name'], $_POST['last-name'], $_POST['email'], $_POST['pa
     // Email already exists in database 
     if ($isEmailExisting['email'] === $email) {
         // Error message printed in register.php (front-end) and user redirected back to register page
-        // $_SESSION['messages'];
-        $_SESSION['error'] = 'Email exists';
+        $_SESSION['errors'][] = 'Email exists';
         redirect('/register.php');
         // Stop script from running if email exists
         exit;

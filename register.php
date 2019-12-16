@@ -10,19 +10,12 @@ require __DIR__ . '/views/header.php';
 <section class="sign-up-page">
     <h1>Sign up</h1>
     <form action="/app/users/register.php" method="post" class="sign-up-form">
-        <div>
+        <div class="error-message">
             <?php
-            // if (isset($_SESSION['messages'])) {
-            //     require __DIR__ . '/views/messages.php';
+            if (isset($_SESSION['errors'][0])) {
 
-            //     foreach ($_SESSION['messages'] as $message) {
-            //         echo $message;
-            //     };
-            //} 
-            // The above code needs to be fixed, use below for now
-            if (isset($_SESSION['error'])) {
-                echo $_SESSION['error'];
-                unset($_SESSION['error']);
+                echo $_SESSION['errors'][0];
+                unset($_SESSION['errors']);
             }
             ?>
         </div>

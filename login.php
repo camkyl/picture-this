@@ -9,18 +9,14 @@ require __DIR__ . '/views/header.php';
 <section class="sign-in-page">
     <h1>Sign in</h1>
     <form action="/app/users/login.php" method="post" class="sign-in-form">
-        <div>
+        <div class="error-message">
             <!--Error message-->
             <?php
-            if (isset($_SESSION['email-not-found'])) {
-                echo $_SESSION['email-not-found'];
-            }
-            unset($_SESSION['email-not-found']);
+            if (isset($_SESSION['errors'][0])) {
 
-            if (isset($_SESSION['error'])) {
-                echo $_SESSION['error'];
+                echo $_SESSION['errors'][0];
+                unset($_SESSION['errors']);
             }
-            unset($_SESSION['error']);
             ?>
         </div>
 

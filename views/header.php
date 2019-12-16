@@ -3,7 +3,7 @@
 
 declare(strict_types=1);
 
-require(__DIR__ . '/../app/autoload.php');
+require __DIR__ . '/../app/autoload.php';
 
 ?>
 
@@ -18,6 +18,7 @@ require(__DIR__ . '/../app/autoload.php');
     <link rel="stylesheet" href="/assets/styles/main.css">
     <link rel="stylesheet" href="/assets/styles/login.css">
     <link rel="stylesheet" href="/assets/styles/register.css">
+    <link rel="stylesheet" href="/assets/styles/profile.css">
     <style>
         @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro|Ubuntu&display=swap');
     </style>

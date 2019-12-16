@@ -7,14 +7,26 @@
 * {
   box-sizing: border-box;
   font-family: "Source Sans Pro", sans-serif;
-  color: var(--white);
 }
 
 body {
-  background-image: var(--unique-color);
   height: 100vh;
   width: 100vw;
   margin: 0;
+}
+
+/*temporary styling*/
+nav {
+  height: 8vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid black;
+  margin-bottom: 20px;
+}
+
+nav a {
+  padding: 10px;
 }
 
 a {
@@ -35,5 +47,3 @@ button {
 input {
   all: unset;
 }
-
-

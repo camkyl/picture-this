@@ -33,7 +33,7 @@ if (isset($_POST['email'], $_POST['password'])) {
 
     // Email not found in database
     if (!$user['email']) {
-        $_SESSION['email-not-found'] = 'Email not found.';
+        $_SESSION['errors'][] = 'Email not found.';
         redirect('/login.php');
         // Kill script if user is not found
         exit;
@@ -46,7 +46,7 @@ if (isset($_POST['email'], $_POST['password'])) {
         unset($user['password']);
         $_SESSION['user'] = $user;
     } else {
-        $_SESSION['error'] = 'You entered the wrong password';
+        $_SESSION['errors'][] = 'You entered the wrong password';
         redirect('/login.php');
         exit;
     }

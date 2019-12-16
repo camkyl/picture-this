@@ -1,4 +1,6 @@
 <?php
+// Is required in - STILL WORKING ON
+
 $_SESSION['messages'][] = [
     'wrong email' => 'You entered the wrong email!',
     'successful login' => 'You are now logged in!',
