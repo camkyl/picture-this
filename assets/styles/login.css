@@ -1,0 +1,53 @@
+.sign-in-page,
+.sign-in-form,
+.sign-in-form__email,
+.sign-in-form__password,
+.sign-in-page__register,
+.sign-up-page,
+.sign-up-form,
+.sign-up-form__first-name,
+.sign-up-form__last-name,
+.sign-up-form__email,
+.sign-up-form__password,
+.sign-up-page__login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sign-in-page,
+.sign-up-page {
+  height: 100vh;
+  justify-content: center;
+}
+
+.not-logged-in-input {
+  text-align: center;
+  width: 80vw;
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 10px 0;
+  border-radius: 8px;
+  margin: 10px;
+}
+
+.sign-in-form__button {
+  padding: 5px 20px;
+  margin: 10px;
+}
+
+.visibility-hidden {
+  visibility: hidden;
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+/* @media only screen and (min-width: 600px) {
+
+} */
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .not-logged-in-input {
+    text-align: center;
+    width: 25vw;
+  }
+}
