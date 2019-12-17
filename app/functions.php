@@ -19,6 +19,17 @@ if (!function_exists('redirect')) {
 }
 
 /**
+ * Displays error messages if they occur 
+ */
+function displayErrorMessage() {
+    if (isset($_SESSION['errors'][0])) {
+
+        echo $_SESSION['errors'][0];
+        unset($_SESSION['errors']);
+    }
+}
+
+/**
  * Redirects the user to the root directory if she/he is not authorized to enter the page without being logged in
  * 
  * @return bool

@@ -47,3 +47,9 @@ button {
 input {
   all: unset;
 }
+
+.image {
+  width: 100vw;
+  height: 25vh;
+  background-color: grey;
+}

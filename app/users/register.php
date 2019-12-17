@@ -64,8 +64,5 @@ if (isset($_POST['first-name'], $_POST['last-name'], $_POST['email'], $_POST['pa
         ':password' => $hashedPassword
     ]);
 
-    // User registered
-    $_SESSION['success'] = 'Registration succeeded';
-
-    redirect('/');
+    redirect('/index.php');
 }

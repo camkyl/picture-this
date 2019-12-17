@@ -12,11 +12,7 @@ require __DIR__ . '/views/header.php';
         <div class="error-message">
             <!--Error message-->
             <?php
-            if (isset($_SESSION['errors'][0])) {
-
-                echo $_SESSION['errors'][0];
-                unset($_SESSION['errors']);
-            }
+            displayErrorMessage();
             ?>
         </div>
 

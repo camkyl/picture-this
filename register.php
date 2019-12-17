@@ -12,11 +12,7 @@ require __DIR__ . '/views/header.php';
     <form action="/app/users/register.php" method="post" class="sign-up-form">
         <div class="error-message">
             <?php
-            if (isset($_SESSION['errors'][0])) {
-
-                echo $_SESSION['errors'][0];
-                unset($_SESSION['errors']);
-            }
+            displayErrorMessage();
             ?>
         </div>
 

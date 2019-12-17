@@ -45,6 +45,9 @@ if (isset($_POST['email'], $_POST['password'])) {
     if (password_verify($password, $hashedPassword)) {
         unset($user['password']);
         $_SESSION['user'] = $user;
+
+        // die(var_dump($user['first_name']));
+        // array(4) { ["id"]=> string(1) "4" ["first_name"]=> string(7) "Camilla" ["last_name"]=> string(18) "Kylmänen Sjörén" ["email"]=> string(11) "cks@live.se" }
     } else {
         $_SESSION['errors'][] = 'You entered the wrong password';
         redirect('/login.php');
