@@ -4,7 +4,7 @@
 
 ## Description
 
-School assignment ay Yrgo Webbutvecklare where we are creating an Instagram clone. 
+School assignment at Yrgo Webbutvecklare where we are creating an Instagram clone. 
 
 ## Built with
 
@@ -16,9 +16,9 @@ School assignment ay Yrgo Webbutvecklare where we are creating an Instagram clon
 
 ## Features
 
-- [] As a user I should be able to create an account.
-- [] As a user I should be able to login.
-- [] As a user I should be able to logout.
+- [x] As a user I should be able to create an account.
+- [x] As a user I should be able to login.
+- [x] As a user I should be able to logout.
 - [] As a user I should be able to edit my account email, password and biography.
 - [] As a user I should be able to upload a profile avatar image.
 - [] As a user I should be able to create new posts with image and description.
