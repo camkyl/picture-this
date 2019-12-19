@@ -8,8 +8,6 @@ require __DIR__ . '/../autoload.php';
 
 // In this file we add or edit the users avatar.
 
-$_SESSION['messages'] = [];
-
 if (isset($_FILES['avatar'])) {
     // die(var_dump($_FILES['avatar']));
     // array(5) { 
@@ -29,7 +27,7 @@ if (isset($_FILES['avatar'])) {
         $_SESSION['errors'][] = 'The uploaded file type is not allowed. Only .jpg and .png allowed.';
     }
 
-    // Only file sizes equal to or lower than two megabytes are allowed.
+    // File size equal to or lower than two megabytes allowed.
     // 2 Megabyte = 2097152 Bytes
     if ($avatar['size'] > 2097152) {
         $_SESSION['errors'][] = 'The uploaded file exceeded the filesize limit.';

@@ -17,8 +17,9 @@ require __DIR__ . '/views/header.php';
         <!-- <?php //require __DIR__ . '/avatar.php'; 
                 ?> -->
         <form action="/app/users/edit-avatar.php" method="post" enctype="multipart/form-data">
-            <div><?php echo $_SESSION['user']['avatar']; ?></div>
-            <img src="/app/users/avatar/<?php echo $_SESSION['user']['avatar']; ?>" style="width:200px;height:200px;background-color:grey;">
+            <div><?php //echo $_SESSION['user']['avatar']; 
+                    ?></div>
+            <img src="/app/users/avatar/<?php echo $_SESSION['user']['avatar']; ?>" style="width:300px;height:200px;background-color:grey;">
             <div>
                 <label for="avatar">Choose an image to upload</label><br>
                 <input type="file" name="avatar" id="avatar" required>
@@ -40,7 +41,7 @@ require __DIR__ . '/views/header.php';
             <br>
             <div>
                 <label for="biography">Bio: </label>
-                <input type="text" name="biography" value="<?php $_SESSION['user']['biography']; ?>">
+                <input type="text" name="biography" value="<?php echo $_SESSION['user']['biography']; ?>">
             </div>
 
             <button type="submit">Save</button>
