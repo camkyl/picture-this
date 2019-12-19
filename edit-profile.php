@@ -14,11 +14,9 @@ require __DIR__ . '/views/header.php';
             displayConfirmationMessage();
             ?>
         </div>
-        <!-- <?php //require __DIR__ . '/avatar.php'; 
-                ?> -->
+
         <form action="/app/users/edit-avatar.php" method="post" enctype="multipart/form-data">
-            <div><?php //echo $_SESSION['user']['avatar']; 
-                    ?></div>
+
             <img src="/app/users/avatar/<?php echo $_SESSION['user']['avatar']; ?>" style="width:300px;height:200px;background-color:grey;">
             <div>
                 <label for="avatar">Choose an image to upload</label><br>
@@ -41,7 +39,7 @@ require __DIR__ . '/views/header.php';
             <br>
             <div>
                 <label for="biography">Bio: </label>
-                <input type="text" name="biography" value="<?php echo $_SESSION['user']['biography']; ?>">
+                <textarea type="text" name="biography" rows="5" cols="30"><?php echo $_SESSION['user']['biography']; ?></textarea>
             </div>
 
             <button type="submit">Save</button>
