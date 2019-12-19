@@ -4,7 +4,7 @@
 
 ## Description
 
-School assignment ay Yrgo Webbutvecklare where we are creating an Instagram clone. 
+School assignment at Yrgo Webbutvecklare where we are creating an Instagram clone. 
 
 ## Built with
 

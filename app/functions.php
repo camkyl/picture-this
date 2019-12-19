@@ -21,11 +21,24 @@ if (!function_exists('redirect')) {
 /**
  * Displays error messages if they occur 
  */
-function displayErrorMessage() {
+function displayErrorMessage()
+{
     if (isset($_SESSION['errors'][0])) {
 
         echo $_SESSION['errors'][0];
         unset($_SESSION['errors']);
+    }
+}
+
+/**
+ * Messages confirming that an upload succeeded
+ */
+function displayConfirmationMessage()
+{
+    if (isset($_SESSION['messages'][0])) {
+
+        echo $_SESSION['messages'][0];
+        unset($_SESSION['messages']);
     }
 }
 
@@ -39,4 +52,18 @@ function isLoggenIn()
     if (!isset($_SESSION['user'])) {
         redirect('/');
     }
+}
+
+/**
+ * Generates a random number
+ * Used for profile avatars
+ * https://www.php.net/manual/en/function.com-create-guid.php
+ */
+function GUID()
+{
+    if (function_exists('com_create_guid') === true) {
+        return trim(com_create_guid(), '{}');
+    }
+
+    return sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
 }
