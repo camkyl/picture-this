@@ -8,7 +8,9 @@ require __DIR__ . '/views/header.php';
 
 <section class="profile">
     <div>
-        <div class="image">Image</div>
+        <div class="image">
+            <img src="">
+        </div>
         <h3>Name</h3>
         <p><?php echo $_SESSION['user']['first_name']; ?></p>
         <h3>Bio</h3>
