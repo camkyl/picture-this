@@ -19,19 +19,22 @@ School assignment at Yrgo Webbutvecklare where we are creating an Instagram clon
 - [x] As a user I should be able to create an account.
 - [x] As a user I should be able to login.
 - [x] As a user I should be able to logout.
-As a user I should be able to edit my account email, password and biography.
+- As a user I should be able to edit my account email, password and biography.
 - [x] As a user I should be able to upload a profile avatar image.
-As a user I should be able to create new posts with image and description.
-As a user I should be able to edit my posts.
-As a user I should be able to delete my posts.
-As a user I should be able to like posts.
-As a user I should be able to remove likes from posts.
+- As a user I should be able to create new posts with image and description.
+- As a user I should be able to edit my posts.
+- As a user I should be able to delete my posts.
+- As a user I should be able to like posts.
+- As a user I should be able to remove likes from posts.
 
 ## Preview
+ TBA
 
 ## Installation
+ TBA
 
 ## Tested by
+TBA
 
 ## License
 
