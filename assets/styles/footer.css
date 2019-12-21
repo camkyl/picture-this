@@ -1,0 +1,17 @@
+footer {
+  width: 100vw;
+  height: 8vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 0.5px solid var(--black-transparent);
+}
+
+footer a {
+  margin: 0;
+  text-align: center;
+}
+
+.icon {
+  width: 20%;
+}

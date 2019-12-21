@@ -1,0 +1,26 @@
+main {
+  height: 86vh;
+  overflow-y: scroll;
+}
+
+.content {
+  width: 100vw;
+  margin-bottom: 24px;
+}
+
+.w-full {
+  width: 100vw;
+}
+
+/*temporary styling*/
+.post__image {
+  height: 25vh;
+  background-color: #ff9357;
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .content {
+    width: 70vw;
+  }
+}
