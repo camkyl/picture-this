@@ -1,12 +1,18 @@
 :root {
   --unique-color: radial-gradient(circle at 50% 1%, #ff9357, 35%, #004965);
   --white: #fff;
-  --white-button-background: rgba(255, 255, 255, 0.3);
+  --white-transparent: rgba(255, 255, 255, 0.3);
+  --black: #000;
 }
 
 * {
   box-sizing: border-box;
   font-family: "Source Sans Pro", sans-serif;
+  margin: 0;
+}
+
+h1 {
+  font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -22,7 +28,6 @@ nav {
   display: flex;
   align-items: center;
   border-bottom: 1px solid black;
-  margin-bottom: 20px;
 }
 
 nav a {
@@ -40,7 +45,7 @@ a:hover {
 button {
   border: 2px solid black;
   border-radius: 8px;
-  background-color: var(--white-button-background);
+  background-color: var(--white-transparent);
   cursor: pointer;
 }
 

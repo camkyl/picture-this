@@ -1,0 +1,93 @@
+.sign-in-page,
+.sign-up-page {
+  background-image: var(--unique-color);
+}
+
+.sign-in-page,
+.sign-in-form,
+.sign-in-form__group,
+.sign-in-page__register,
+.sign-up-page,
+.sign-up-form,
+.sign-up-form__group,
+.sign-up-page__login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sign-in-page,
+.sign-up-page {
+  height: 100vh;
+  justify-content: center;
+}
+
+.sign-in-page h1,
+.sign-up-page h1 {
+  color: var(--white);
+}
+
+.sign-in-form__group label,
+.sign-up-form__group label {
+  color: var(--white);
+  font-weight: bolder;
+}
+
+.not-logged-in-input {
+  all: unset;
+  text-align: center;
+  width: 80vw;
+  /* background-color: rgba(255, 255, 255, 0.3);
+  color: var(--white); */
+  border-bottom: 1px solid var(--white);
+  padding: 10px 0;
+  /* border-radius: 8px; */
+  margin: 10px;
+}
+
+.sign-in-form__button,
+.sign-up-form__button {
+  padding: 5px 20px;
+  margin: 10px;
+  border: 2px solid var(--white);
+  border-radius: 8px;
+  background-color: var(--white-transparent);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.sign-in-page__register,
+.sign-up-page__login,
+.sign-in-page__register a,
+.sign-up-page__login a,
+.sign-in-page__register a:visited,
+.sign-up-page__login a:visited {
+  color: var(--white);
+}
+
+.visibility-hidden {
+  visibility: hidden;
+}
+
+.desktop-frame {
+  border: 1px solid var(--white);
+  border-radius: 8px;
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+/* @media only screen and (min-width: 600px) {
+
+} */
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .desktop-frame {
+    border: 1px solid var(--white-transparent);
+    border-radius: 8px;
+  }
+
+  .not-logged-in-input {
+    text-align: center;
+    width: 22vw;
+  }
+}
