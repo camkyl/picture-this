@@ -7,9 +7,9 @@ require __DIR__ . '/../autoload.php';
 
 // In this file we upload users posts
 
-if (isset($_FILES['post-image'], $_POST['post-description'])) {
+if (isset($_FILES['post-image'], $_POST['post-caption'])) {
     $image = $_FILES['post-image'];
-    $description = filter_var($_POST['post-description'], FILTER_SANITIZE_STRING);
+    $caption = filter_var($_POST['post-caption'], FILTER_SANITIZE_STRING);
     $date = date('F j, Y'); // Prints the format December 19, 2019
     $fileExtension = pathinfo($image['name'])['extension'];
     $fileName = GUID() . '.' . $fileExtension;
@@ -31,5 +31,19 @@ if (isset($_FILES['post-image'], $_POST['post-description'])) {
 
     // Connection to database is made in autoload.php and saved in the variable $pdo
 
+    // Preparing SQL query to insert post to database
+    $statement = $pdo->query("INSERT INTO media (post_image, post_caption, created_time, user_id) VALUES (:filename, :caption, date('now'), :user_id)");
 
+    if(!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+
+    // Binding parameters with variables and running the script
+    $statement->execute([
+        ':filename' => $fileName,
+        ':caption' => $caption,
+        ':user_id' => $id
+    ]);
+
+    redirect('/');
 }
