@@ -11,7 +11,7 @@ require __DIR__ . '/views/header.php';
 
     <div class="form-frame flex-col-cen">
 
-        <h1>Sign in</h1>
+        <h1>Log in</h1>
 
         <form action="/app/users/login.php" method="post" class="log-in-form">
             <div class="error-message">
