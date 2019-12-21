@@ -20,7 +20,7 @@ require __DIR__ . '/../app/autoload.php';
     <link rel="stylesheet" href="/assets/styles/register.css">
     <link rel="stylesheet" href="/assets/styles/profile.css">
     <style>
-        @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro|Ubuntu&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro|Ubuntu|Poppins&display=swap');
     </style>
     <title>Picture this</title>
 </head>

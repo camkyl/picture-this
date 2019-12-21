@@ -24,7 +24,7 @@ if (isset($_FILES['avatar'])) {
 
     // Only .png and .jpg files are allowed.
     if (!in_array($avatar['type'], ['image/jpeg', 'image/png'])) {
-        $_SESSION['errors'][] = 'The uploaded file type is not allowed. Only .jpg and .png allowed.';
+        $_SESSION['errors'][0] = 'The uploaded file type is not allowed. Only .jpg and .png allowed.';
     }
 
     // File size equal to or lower than two megabytes allowed.
