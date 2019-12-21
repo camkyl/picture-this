@@ -97,7 +97,7 @@
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   .not-logged-in-input {
-    width: 28vw;
+    width: 26vw;
   }
 
   .log-in-form__group label,
