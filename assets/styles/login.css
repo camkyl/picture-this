@@ -1,47 +1,92 @@
-.sign-in-page,
+.log-in-page,
 .sign-up-page {
+  height: 100vh;
   background-image: var(--unique-color);
+  justify-content: space-evenly;
 }
 
-.sign-in-page,
-.sign-in-form,
-.sign-in-form__email,
-.sign-in-form__password,
-.sign-in-page__register,
-.sign-up-page,
-.sign-up-form,
-.sign-up-form__first-name,
-.sign-up-form__last-name,
-.sign-up-form__email,
-.sign-up-form__password,
-.sign-up-page__login {
+.flex-col-cen {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.sign-in-page,
-.sign-up-page {
-  height: 100vh;
-  justify-content: center;
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.log-in-page h1,
+.sign-up-page h1 {
+  color: var(--white);
+}
+
+.form-frame {
+  border: 1px solid var(--white);
+  border-radius: 8px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.log-in-form__group label,
+.sign-up-form__group label {
+  color: var(--white);
+  font-family: "Poppins", sans-serif;
+  font-weight: bolder;
+  margin-top: 14px;
 }
 
 .not-logged-in-input {
-  text-align: center;
+  all: unset;
   width: 80vw;
-  background-color: rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid var(--white);
+  color: white;
   padding: 10px 0;
-  border-radius: 8px;
-  margin: 10px;
+  margin: 0px;
 }
 
-.sign-in-form__button {
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--white-transparent);
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: var(--white-transparent);
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: var(--white-transparent);
+}
+
+.log-in-form__button,
+.sign-up-form__button {
   padding: 5px 20px;
-  margin: 10px;
+  margin: 26px 0 20px 0;
+  border: 2px solid var(--white);
+  border-radius: 8px;
+  background-color: var(--white-transparent);
+  color: var(--white);
+  cursor: pointer;
 }
 
-.visibility-hidden {
-  visibility: hidden;
+.log-in-page__register {
+  margin-top: 80px;
+}
+
+.log-in-page__register a,
+.sign-up-page__login a {
+  font-weight: bolder;
+}
+
+.c-white {
+  color: var(--white);
+}
+
+.log-in-page__register a:visited,
+.sign-up-page__login a:visited {
+  color: var(--white);
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -52,7 +97,11 @@
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   .not-logged-in-input {
-    text-align: center;
-    width: 25vw;
+    width: 28vw;
+  }
+
+  .log-in-form__group label,
+  .sign-up-form__group label {
+    margin-top: 20px;
   }
 }
