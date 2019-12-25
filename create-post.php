@@ -6,6 +6,8 @@ declare(strict_types=1);
 
 require __DIR__ . '/views/header.php';
 
+isLoggenIn();
+
 // In this file users can create posts
 ?>
 

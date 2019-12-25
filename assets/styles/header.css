@@ -1,0 +1,20 @@
+header {
+  background-color: var(--white);
+}
+
+/*temporary styling*/
+nav {
+  height: 6vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--black-transparent);
+}
+
+nav a {
+  padding: 10px;
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}

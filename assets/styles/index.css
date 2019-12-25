@@ -1,6 +1,8 @@
 main {
+  /*header/nav is 6vh and footer is 8vh*/
   height: 86vh;
   overflow-y: scroll;
+  background-color: var(--white);
 }
 
 .content {
@@ -12,15 +14,33 @@ main {
   width: 100vw;
 }
 
+.post__header,
+.post__text-content {
+  margin: 2%;
+}
+
 /*temporary styling*/
+.post__caption {
+  display: flex;
+}
+
+.post__caption .bold {
+  font-weight: bold;
+}
+
 .post__image {
   height: 25vh;
-  background-color: #ff9357;
+  background-color: #cecece;
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-  .content {
-    width: 70vw;
+  body {
+    align-items: center;
+  }
+
+  main {
+    width: 60vw;
+    border: 1px solid var(--black-transparent);
   }
 }

@@ -16,9 +16,10 @@ require __DIR__ . '/../app/autoload.php';
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css">
     <link rel="stylesheet" href="/assets/styles/main.css">
-    <link rel="stylesheet" href="/assets/styles/login.css">
-    <link rel="stylesheet" href="/assets/styles/register.css">
     <link rel="stylesheet" href="/assets/styles/index.css">
+    <link rel="stylesheet" href="/assets/styles/header.css">
+    <link rel="stylesheet" href="/assets/styles/register.css">
+    <link rel="stylesheet" href="/assets/styles/login.css">
     <link rel="stylesheet" href="/assets/styles/profile.css">
     <link rel="stylesheet" href="/assets/styles/create-post.css">
     <link rel="stylesheet" href="/assets/styles/footer.css">
@@ -29,4 +30,6 @@ require __DIR__ . '/../app/autoload.php';
 </head>
 
 <body>
-    <?php require(__DIR__ . '/navigation.php');
+    <header>
+        <?php require __DIR__ . '/navigation.php'; ?>
+    </header>

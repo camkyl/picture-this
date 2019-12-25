@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 require __DIR__ . '/views/header.php';
 
+isLoggenIn();
+
 ?>
 
 <section class="profile">
