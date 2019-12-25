@@ -53,9 +53,10 @@ a:hover {
 }
 
 button {
-  border: 2px solid black;
-  border-radius: 8px;
+  border: 1px solid black;
+  border-radius: 5px;
   background-color: var(--white-transparent);
+  padding: 4px 10px;
   cursor: pointer;
 }
 
