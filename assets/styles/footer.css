@@ -1,6 +1,6 @@
 footer {
   width: 100vw;
-  height: 8vh;
+  height: 9vh;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -14,7 +14,22 @@ footer a {
 }
 
 .icon {
-  width: 20%;
+  width: 16%;
+}
+
+.add {
+  width: 35%;
+  height: 35%;
+}
+
+.add__background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 6.4vh;
+  height: 6.4vh;
+  background-image: var(--icon-color);
+  border-radius: 50%;
 }
 
 /* Large devices (laptops/desktops, 992px and up) */

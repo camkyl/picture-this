@@ -1,5 +1,6 @@
 :root {
   --unique-color: radial-gradient(circle at 50% 1%, #ff9357, 35%, #004965);
+  --icon-color: linear-gradient(90deg, #ff9357, #004965);
   --white: #fff;
   --white-transparent: rgba(255, 255, 255, 0.3);
   --black: #000;
