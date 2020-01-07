@@ -20,6 +20,7 @@ footer a {
 .add {
   width: 35%;
   height: 35%;
+  margin-top: 2px;
 }
 
 .add__background {

@@ -18,6 +18,7 @@ require __DIR__ . '/../app/autoload.php';
     <link rel="stylesheet" href="/assets/styles/main.css">
     <link rel="stylesheet" href="/assets/styles/index.css">
     <link rel="stylesheet" href="/assets/styles/header.css">
+    <link rel="stylesheet" href="/assets/styles/navigation.css">
     <link rel="stylesheet" href="/assets/styles/register.css">
     <link rel="stylesheet" href="/assets/styles/login.css">
     <link rel="stylesheet" href="/assets/styles/profile.css">
@@ -31,6 +32,5 @@ require __DIR__ . '/../app/autoload.php';
 </head>
 
 <body>
-    <header>
-        <?php require __DIR__ . '/navigation.php'; ?>
-    </header>
+
+    <?php require __DIR__ . '/navigation.php'; ?>

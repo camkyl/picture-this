@@ -1,14 +1,26 @@
 header {
-  background-color: var(--white);
-}
-
-/*temporary styling*/
-nav {
-  height: 6vh;
+  height: 8vh;
   width: 100vw;
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  padding: 30px 10px 10px 10px;
+  background-color: var(--white);
   border-bottom: 1px solid var(--black-transparent);
+}
+
+.navigation__add img {
+  width: 5vw;
+  height: auto;
+}
+
+.navigation__home img {
+  width: 32vw;
+  box-shadow: 0 0 2px 2px var(--light-grey);
+}
+
+nav {
+  display: flex;
 }
 
 nav a {
