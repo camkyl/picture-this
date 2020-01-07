@@ -51,12 +51,21 @@ button {
   cursor: pointer;
 }
 
+/*temporary for index page*/
 .image {
   width: 100vw;
   height: 25vh;
   background-color: grey;
 }
 
+/*messages*/
+.message {
+  width: 100vw;
+  text-align: center;
+  margin: 10px;
+}
+
+/*repeatedly used properties*/
 .flex-col-cen {
   display: flex;
   flex-direction: column;
