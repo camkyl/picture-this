@@ -10,10 +10,12 @@ isLoggenIn();
 
 <section class="edit-profile">
     <div class="profile__personal flex-col">
-        <?php
-        displayErrorMessage();
-        displayConfirmationMessage();
-        ?>
+        <div class="message">
+            <?php
+            displayErrorMessage();
+            displayConfirmationMessage();
+            ?>
+        </div>
 
         <form action="/app/users/edit-avatar.php" method="post" enctype="multipart/form-data" class="personal__avatar flex-col-cen">
             <div class="profile__image">
