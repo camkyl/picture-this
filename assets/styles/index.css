@@ -1,6 +1,6 @@
 main {
-  /*header/nav is 6vh and footer is 8vh*/
-  height: 86vh;
+  /*header/nav is 6vh and footer is 9vh*/
+  height: 85vh;
   overflow-y: scroll;
   background-color: var(--white);
 }

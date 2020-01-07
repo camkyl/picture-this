@@ -9,21 +9,54 @@ isLoggenIn();
 ?>
 
 <section class="profile">
-    <div>
-        <div class="image">
-            <img src="">
+    <div class="profile__intro">
+        <div class="profile__image flex-col-cen">
+            <img src="/app/users/avatar/<?php echo $_SESSION['user']['avatar']; ?>">
         </div>
-        <h3>Name</h3>
-        <p><?php echo $_SESSION['user']['first_name']; ?></p>
-        <h3>Bio</h3>
-        <p><?php
-            if ($_SESSION['user']['biography'] === null) {
-                echo 'No bio entered';
-            } else {
-                echo $_SESSION['user']['biography'];
-            }
-            ?></p>
 
-        <a href="/edit-profile.php">Edit profile</a>
+        <h3 class="profile__name flex-cen"><?php echo $_SESSION['user']['first_name']; ?></h3>
+
+        <div class="profile__stats">
+            <div class="flex-col-cen">
+                <h5>Posts</h5>
+                <p> 1 <?php //echo $_SESSION['user']['']; 
+                        ?></p>
+            </div>
+            <div class="flex-col-cen">
+                <h5>Followers</h5>
+                <p> 49 <?php //echo $_SESSION['user']['']; 
+                        ?></p>
+            </div>
+            <div class="flex-col-cen">
+                <h5>Following</h5>
+                <p> 20 <?php //echo $_SESSION['user']['']; 
+                        ?></p>
+            </div>
+        </div>
+
+        <div class="profile__bio flex-cen">
+            <p><?php
+                if ($_SESSION['user']['biography'] === null) {
+                    echo 'No bio entered';
+                } else {
+                    echo $_SESSION['user']['biography'];
+                }
+                ?></p>
+        </div>
+
+        <div class="profile__edit flex-cen">
+            <a class="" href="/edit-profile.php">Edit profile</a>
+        </div>
+    </div>
+    <!--/ profile__intro-->
+
+    <div class="profile__posts">
+        <p>posts will be desiplayed here..</p>
     </div>
 </section>
+
+<?php
+
+require __DIR__ . '/views/footer.php';
+
+?>
