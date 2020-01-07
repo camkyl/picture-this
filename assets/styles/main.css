@@ -1,11 +1,12 @@
 :root {
   --unique-color: radial-gradient(circle at 50% 1%, #ff9357, 35%, #004965);
-  --icon-color: linear-gradient(90deg, #ff9357, #004965);
+  --icon-color: linear-gradient(60deg, #ff9357, #004965);
   --white: #fff;
   --white-transparent: rgba(255, 255, 255, 0.3);
   --black: #000;
   --black-transparent: rgba(0, 0, 0, 0.3);
   --light-grey: #f7f7f7;
+  --grey: #838383;
 }
 
 * {
@@ -20,7 +21,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Poppins", sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 
 body {
@@ -54,4 +55,20 @@ button {
   width: 100vw;
   height: 25vh;
   background-color: grey;
+}
+
+.flex-col-cen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-cen {
+  display: flex;
+  justify-content: center;
 }

@@ -1,13 +1,16 @@
 <?php
-// Is required in index.php 
 
 declare(strict_types=1);
 
 ?>
 
 <footer>
-    <a href="/index.php">
-        <img src="/views/icons/home2.svg" alt="Home" class="icon">
+    <a href="/index.php" class="icon">
+        <img src="/views/icons/home2.svg" alt="Home">
+    </a>
+
+    <a href="#" class="icon">
+        <img src="/views/icons/search3.svg" alt="Search">
     </a>
 
     <div class="add__background">
@@ -16,8 +19,12 @@ declare(strict_types=1);
         </a>
     </div>
 
-    <a href="#">
-        <img src="/views/icons/heart.svg" alt="Liked by me" class="icon">
+    <a href="#" class="icon">
+        <img src="/views/icons/heart.svg" alt="Liked by me">
+    </a>
+
+    <a href="/profile.php" class="icon">
+        <img src="/views/icons/user.svg" alt="My profile">
     </a>
 </footer>
 

@@ -1,0 +1,75 @@
+.edit-profile {
+  height: 100vh;
+  background-color: var(--white);
+}
+
+/*remove default "choose image" input text*/
+.profile__image-edit {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile__image-edit input[type="file"] {
+  font-size: 40px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.profile__image-edit button {
+  padding: 4px;
+  width: 90px;
+}
+
+.personal__avatar {
+  margin-bottom: 20px;
+}
+
+form.personal__text {
+  width: 100vw;
+}
+
+form.personal__text label {
+  display: inline-block;
+  width: 22vw;
+}
+
+form.personal__text input {
+  width: 68vw;
+  color: var(--grey);
+}
+
+form.personal__text textarea {
+  width: 68vw;
+  height: 20vh;
+  color: var(--grey);
+}
+
+form.personal__text button {
+  background-image: var(--icon-color);
+  border-radius: 20px;
+  color: white;
+  border: none;
+  font-size: 14px;
+  padding: 8px 20px;
+  font-weight: bolder;
+}
+
+.personal__biography {
+  display: flex;
+  border-bottom: 0.5px solid var(--black-transparent);
+  margin-bottom: 20px;
+}
+
+.mt15 {
+  margin-top: 15px;
+  padding: 5px;
+}
+
+.blg {
+  border-bottom: 0.5px solid var(--black-transparent);
+}
