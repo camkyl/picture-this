@@ -7,6 +7,19 @@ require __DIR__ . '/views/header.php';
 require __DIR__ . '/views/navigation.php';
 
 isLoggenIn();
+
+// Fetching user information which will be displayed in the feed
+$userId = (int) $_SESSION['user']['id'];
+$user = getUserById((int) $userId, $pdo);
+
+$firstName = $user['first_name'];
+$lastName = $user['last_name'];
+$avatar = $user['avatar'];
+
+// var_dump($user);
+
+// Fetching posts 
+// $posts = getAllPosts($pdo);
 ?>
 
 <main>
