@@ -60,7 +60,7 @@ button {
 
 /*messages*/
 .message {
-  width: 100vw;
+  width: 100%;
   text-align: center;
   margin: 10px;
 }
