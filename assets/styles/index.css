@@ -5,7 +5,7 @@ main {
   background-color: var(--white);
 }
 
-.content {
+.feed {
   width: 100vw;
   margin-bottom: 24px;
 }
@@ -14,18 +14,29 @@ main {
   width: 100vw;
 }
 
-.post__header,
-.post__text-content {
-  margin: 2%;
+.post__header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
 }
 
-/*temporary styling*/
+.post__header img {
+  width: 11vw;
+  height: 11vw;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.post__text-content {
+  padding: 10px;
+}
+
 .post__caption {
   display: flex;
 }
 
-.post__caption .bold {
-  font-weight: bold;
+.post__caption h4 {
+  margin-right: 6px;
 }
 
 .post__image {
