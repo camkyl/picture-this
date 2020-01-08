@@ -50,7 +50,7 @@ function displayConfirmationMessage()
 function isLoggenIn()
 {
     if (!isset($_SESSION['user'])) {
-        redirect('/');
+        redirect('/login.php');
     }
 }
 

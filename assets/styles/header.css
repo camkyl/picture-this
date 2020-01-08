@@ -9,14 +9,18 @@ header {
   border-bottom: 1px solid var(--black-transparent);
 }
 
-.navigation__add img {
+.navigation__back img {
   width: 5vw;
   height: auto;
 }
 
 .navigation__home img {
   width: 32vw;
-  box-shadow: 0 0 2px 2px var(--light-grey);
+}
+
+.navigation__logout img {
+  width: 5vw;
+  height: auto;
 }
 
 nav {

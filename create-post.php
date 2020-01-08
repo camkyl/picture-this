@@ -11,22 +11,23 @@ isLoggenIn();
 // In this file users can create posts
 ?>
 
-<section class="create-post">
-    <h2>Create post</h2>
-    <form action="/app/posts/create-post.php" method="post" enctype="multipart/form-data">
+<section class="create-post flex-col-cen">
+    <h2>New post</h2>
+    <form action="/app/posts/create-post.php" method="post" enctype="multipart/form-data" class="flex-col-cen">
         <div class="create-post__image-frame">
             <img class="create-post__image-preview">
         </div>
 
         <div class="create-post__image">
-            <label for="post-image">Choose an image..</label>
+            <label for="post-image">Choose image..</label>
             <input type="file" id="post-image" required>
         </div>
 
-        <div class="create-post__caption">
+        <div class="create-post__caption flex-col mt15">
             <label for="post-caption">Caption</label>
-            <textarea name="post-caption" placeholder="Write a caption..."></textarea>
+            <textarea name="post-caption" class="mt15"></textarea>
         </div>
-        <button type="submit">Share</button>
+
+        <button type="submit" class="mt15">Share</button>
     </form>
 </section>

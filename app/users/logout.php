@@ -9,4 +9,4 @@ require __DIR__ . '/../autoload.php';
 unset($_SESSION['user']);
 // unset($_SESSION['error']);
 
-redirect('/');
+redirect('/login.php');

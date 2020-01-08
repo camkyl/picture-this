@@ -8,6 +8,7 @@ require __DIR__ . '/../autoload.php';
 // In this file we upload users posts
 
 if (isset($_FILES['post-image'], $_POST['post-caption'])) {
+    die(var_dump($_POST));
     $image = $_FILES['post-image'];
     $caption = filter_var($_POST['post-caption'], FILTER_SANITIZE_STRING);
     $date = date('F j, Y'); // Prints the format December 19, 2019
@@ -32,9 +33,9 @@ if (isset($_FILES['post-image'], $_POST['post-caption'])) {
     // Connection to database is made in autoload.php and saved in the variable $pdo
 
     // Preparing SQL query to insert post to database
-    $statement = $pdo->query("INSERT INTO media (post_image, post_caption, created_time, user_id) VALUES (:filename, :caption, date('now'), :user_id)");
+    $statement = $pdo->query("INSERT INTO media (post_image, post_caption, user_id) VALUES (:filename, :caption, :user_id)");
 
-    if(!$statement) {
+    if (!$statement) {
         die(var_dump($pdo->errorInfo()));
     }
 
