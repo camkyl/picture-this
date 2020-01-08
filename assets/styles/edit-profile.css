@@ -64,12 +64,3 @@ form.personal__text button {
   border-bottom: 0.5px solid var(--black-transparent);
   margin-bottom: 20px;
 }
-
-.mt15 {
-  margin-top: 15px;
-  padding: 5px;
-}
-
-.blg {
-  border-bottom: 0.5px solid var(--black-transparent);
-}

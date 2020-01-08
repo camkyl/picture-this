@@ -1,16 +1,26 @@
 .create-post {
   height: 100vh;
+  width: 100vw;
   background-color: var(--white);
 }
 
-.create-post h2 {
+.create-post h2,
+.create-post__caption label {
   text-transform: capitalize;
+  font-family: "Poppins", sans-serif;
+  font-weight: bolder;
 }
 
 .create-post__image-frame {
   width: 100vw;
-  height: 35vh;
-  background-color: var(--black-transparent);
+  max-height: 50vh;
+  overflow: scroll;
+}
+
+.create-post__image-frame img {
+  display: block;
+  margin: 0;
+  width: 100vw;
 }
 
 /*remove default "choose image" input text*/
@@ -20,6 +30,9 @@
   display: inline-flex;
   flex-direction: column;
   align-items: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 4px 8px;
 }
 
 .create-post__image input[type="file"] {
@@ -33,7 +46,7 @@
 .create-post__caption textarea {
   all: unset;
   width: 90vw;
-  height: 20vh;
+  height: 14vh;
   color: var(--grey);
   border-top: 0.5px solid var(--black-transparent);
   border-bottom: 0.5px solid var(--black-transparent);

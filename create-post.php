@@ -6,28 +6,32 @@ declare(strict_types=1);
 
 require __DIR__ . '/views/header.php';
 
+require __DIR__ . '/views/navigation.php';
+
 isLoggenIn();
 
 // In this file users can create posts
 ?>
 
 <section class="create-post flex-col-cen">
-    <h2>New post</h2>
+    <h2 class="mt15">New post</h2>
     <form action="/app/posts/create-post.php" method="post" enctype="multipart/form-data" class="flex-col-cen">
-        <div class="create-post__image-frame">
-            <img class="create-post__image-preview">
+        <div class="create-post__image-frame bblg btlg mt15">
+            <img id="image">
         </div>
 
-        <div class="create-post__image">
+        <div class="create-post__image mt15">
             <label for="post-image">Choose image..</label>
-            <input type="file" id="post-image" required>
+            <input type="file" name="post-image" id="files" required>
         </div>
 
         <div class="create-post__caption flex-col mt15">
-            <label for="post-caption">Caption</label>
+            <label for="post-caption">Caption:</label>
             <textarea name="post-caption" class="mt15"></textarea>
         </div>
 
         <button type="submit" class="mt15">Share</button>
     </form>
 </section>
+
+<script src="/assets/scripts/create-post.js"></script>

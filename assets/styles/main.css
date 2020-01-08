@@ -81,3 +81,15 @@ button {
   display: flex;
   justify-content: center;
 }
+
+.mt15 {
+  margin-top: 15px;
+}
+
+.btlg {
+  border-top: 0.5px solid var(--black-transparent);
+}
+
+.bblg {
+  border-bottom: 0.5px solid var(--black-transparent);
+}
