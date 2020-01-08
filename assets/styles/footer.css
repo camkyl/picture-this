@@ -38,4 +38,19 @@ footer a {
   footer {
     width: 60vw;
   }
+
+  .icon {
+    width: 2vw;
+  }
+
+  .add {
+    width: 40%;
+    height: 40%;
+    margin-top: 2px;
+  }
+
+  .add__background {
+    width: 7vh;
+    height: 7vh;
+  }
 }
