@@ -14,6 +14,8 @@ School assignment at Yrgo Webbutvecklare where we are creating an Instagram clon
 * CSS
 * JavaScript
 
+The application is responsive and is built using the method mobile-first.
+
 ## Features
 
 - [x] As a user I should be able to create an account.
