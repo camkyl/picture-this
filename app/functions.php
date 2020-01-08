@@ -5,7 +5,7 @@ declare(strict_types=1);
 
 if (!function_exists('redirect')) {
     /**
-     * Redirect the user to given path.
+     * Redirect the user to given path
      *
      * @param string $path
      *
@@ -20,6 +20,8 @@ if (!function_exists('redirect')) {
 
 /**
  * Displays error messages if they occur 
+ * 
+ * @return void
  */
 function displayErrorMessage()
 {
@@ -31,7 +33,9 @@ function displayErrorMessage()
 }
 
 /**
- * Messages confirming that an upload succeeded
+ * Messages confirming success
+ * 
+ * @return void
  */
 function displayConfirmationMessage()
 {
@@ -43,7 +47,7 @@ function displayConfirmationMessage()
 }
 
 /**
- * Redirects the user to the root directory if she/he is not authorized to enter the page without being logged in
+ * Redirects the user to the login page if she/he is not authorized to enter the page without being logged in
  * 
  * @return bool
  */
@@ -58,6 +62,8 @@ function isLoggenIn()
  * Generates a random number
  * Used for profile avatars
  * https://www.php.net/manual/en/function.com-create-guid.php
+ * 
+ * @return void
  */
 function GUID()
 {
