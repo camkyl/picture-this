@@ -1,5 +1,9 @@
 .profile {
   background-color: var(--white);
+  height: 83vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
 }
 
 .profile__intro {
@@ -12,10 +16,14 @@
   border-radius: 50%;
   box-shadow: 0 0 2px 2px var(--light-grey);
   margin: 20px;
+  object-fit: cover;
+  object-position: center;
 }
 
 .profile__name {
   margin-bottom: 20px;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: -0.5px;
 }
 
 .profile__stats {
@@ -27,13 +35,13 @@
 .profile__bio {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin: 0px 30px 20px 30px;
 }
 
 .profile__edit a {
   width: 30vw;
   background-image: var(--icon-color);
-  color: white;
+  color: var(--white);
   text-align: center;
   text-transform: capitalize;
   font-size: 14px;
@@ -42,10 +50,31 @@
   margin-bottom: 20px;
 }
 
-.profile__edit a:hover {
-  background-color: honeydew;
+.profile__posts {
+  overflow-y: scroll;
+  /*makes the div stretch to cover the rest of the space available*/
+  flex: 1;
 }
 
-.profile__posts {
-  height: 220px;
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .profile {
+    width: 55vw;
+  }
+
+  .profile__image img {
+    width: 16vw;
+    height: 16vw;
+  }
+
+  .profile__name {
+    font-size: 24px;
+  }
+  .profile__stats h5 {
+    font-size: 18px;
+  }
+
+  .profile__edit a {
+    width: 10vw;
+  }
 }

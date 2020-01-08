@@ -1,5 +1,6 @@
 .edit-profile {
   height: 100vh;
+  width: 100vw;
   background-color: var(--white);
 }
 
@@ -30,7 +31,7 @@
 }
 
 form.personal__text {
-  width: 100vw;
+  width: 100%;
 }
 
 form.personal__text label {
@@ -39,11 +40,13 @@ form.personal__text label {
 }
 
 form.personal__text input {
+  all: unset;
   width: 68vw;
   color: var(--grey);
 }
 
 form.personal__text textarea {
+  all: unset;
   width: 68vw;
   height: 20vh;
   color: var(--grey);
@@ -52,7 +55,7 @@ form.personal__text textarea {
 form.personal__text button {
   background-image: var(--icon-color);
   border-radius: 20px;
-  color: white;
+  color: var(--white);
   border: none;
   font-size: 14px;
   padding: 8px 20px;
@@ -61,6 +64,35 @@ form.personal__text button {
 
 .personal__biography {
   display: flex;
-  border-bottom: 0.5px solid var(--black-transparent);
+  border-bottom: 0.6px solid var(--black-transparent);
   margin-bottom: 20px;
+}
+
+.w50 {
+  display: flex;
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .edit-profile {
+    width: 55vw;
+  }
+
+  .w50 {
+    width: 50%;
+  }
+
+  form.personal__text label {
+    width: 30%;
+  }
+
+  form.personal__text input {
+    width: 70%;
+    color: var(--grey);
+  }
+
+  form.personal__text textarea {
+    width: 70%;
+    height: 20vh;
+  }
 }

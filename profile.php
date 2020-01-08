@@ -16,7 +16,10 @@ isLoggenIn();
             <img src="/app/users/avatar/<?php echo $_SESSION['user']['avatar']; ?>">
         </div>
 
-        <h3 class="profile__name flex-cen"><?php echo $_SESSION['user']['first_name']; ?></h3>
+        <h3 class="profile__name flex-cen">
+            <?php echo $_SESSION['user']['first_name']; ?>
+            <?php echo $_SESSION['user']['last_name']; ?>
+        </h3>
 
         <div class="profile__stats">
             <div class="flex-col-cen">
@@ -50,7 +53,6 @@ isLoggenIn();
             <a class="" href="/edit-profile.php">Edit profile</a>
         </div>
     </div>
-    <!--/ profile__intro-->
 
     <div class="profile__posts">
         <p>posts will be desiplayed here..</p>

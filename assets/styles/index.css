@@ -51,7 +51,15 @@ main {
   }
 
   main {
-    width: 60vw;
-    border: 1px solid var(--black-transparent);
+    width: 55vw;
+  }
+
+  .post__header {
+    padding: 10px 20px;
+  }
+
+  .post__header img {
+    width: 4vw;
+    height: 4vw;
   }
 }

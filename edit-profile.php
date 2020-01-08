@@ -30,17 +30,17 @@ isLoggenIn();
         </form>
 
         <form action="/app/users/edit-profile.php" method="post" class="personal__text flex-col-cen">
-            <div class="mt15 bblg">
+            <div class="mt15 bblg w50">
                 <label for="first-name">First name: </label>
                 <input type="text" name="first-name" value="<?php echo $_SESSION['user']['first_name']; ?>">
             </div>
 
-            <div class="mt15 bblg">
+            <div class="mt15 bblg w50">
                 <label for="last-name">Last name: </label>
                 <input type="text" name="last-name" value="<?php echo $_SESSION['user']['last_name']; ?>">
             </div>
 
-            <div class="personal__biography mt15 bblg">
+            <div class="personal__biography mt15 bblg w50">
                 <label for="biography">Bio: </label>
                 <textarea type="text" name="biography"><?php echo $_SESSION['user']['biography']; ?></textarea>
             </div>
