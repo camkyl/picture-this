@@ -73,3 +73,28 @@ function GUID()
 
     return sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
 }
+
+/**
+ * Returns user data
+ * 
+ * @param int $userId
+ * @param PDO $pdo
+ * 
+ * @return array 
+ */
+function getUserById(int $userId, PDO $pdo)
+{
+    $statement = $pdo->prepare('SELECT * FROM users WHERE id = :id');
+
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+
+    $statement->execute([
+        ':id' => $userId
+    ]);
+
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+    return $user;
+}
