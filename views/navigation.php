@@ -7,20 +7,20 @@
         ?>
         <!--This menu item is shown if the user is logged in-->
 
-        <img src="/views/icons/back.svg" alt="Back" onclick="history.back(-1)">
+        <img src="/views/icons/back.svg" title="Previous page" alt="Back" onclick="history.back(-1)">
 
         <?php //endif; 
         ?>
     </div>
 
     <div class="navigation__home">
-        <a href="/index.php">
+        <a href="/index.php" title="Home">
             <img src="/views/icons/picture-this-black.svg" alt="Home">
         </a>
     </div>
 
     <div class="navigation__logout">
-        <a href="/app/users/logout.php">
+        <a href="/app/users/logout.php" title="Log out">
             <img src="/views/icons/logout.svg" alt="Log out">
         </a>
     </div>
