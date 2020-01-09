@@ -7,6 +7,7 @@
   --black-transparent: rgba(0, 0, 0, 0.3);
   --light-grey: #f7f7f7;
   --grey: #838383;
+  --dark-grey: #1d1d1d;
 }
 
 * {
@@ -30,8 +31,6 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between;
-  align-content: stretch; */
   background-color: var(--light-grey);
 }
 
