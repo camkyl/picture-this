@@ -1,12 +1,14 @@
-.create-post {
-  min-height: 90vh;
+.create-post,
+.edit-post {
+  min-height: 92vh;
   width: 100vw;
   background-color: var(--white);
   overflow: scroll;
 }
 
 .create-post h2,
-.create-post__caption label {
+.create-post__caption label,
+.edit-post h2 {
   text-transform: capitalize;
   font-family: "Poppins", sans-serif;
   font-weight: bolder;
@@ -46,8 +48,14 @@
   top: 0;
   opacity: 0;
 }
+
 .create-post__caption {
   width: 100%;
+}
+
+.align-left {
+  width: 90%;
+  text-align: left;
 }
 
 .create-post__caption textarea {

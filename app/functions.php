@@ -108,7 +108,7 @@ function getUserById(int $userId, PDO $pdo)
  */
 function getAllPosts($pdo)
 {
-    $statement = $pdo->prepare('SELECT * FROM posts JOIN users ON posts.user_id = users.id ORDER BY posts.date DESC');
+    $statement = $pdo->prepare('SELECT posts.id, posts.user_id, posts.post_image, posts.post_caption, posts.date, users.first_name, users.last_name, users.avatar FROM posts JOIN users ON posts.user_id = users.id ORDER BY posts.date DESC');
 
     if (!$statement) {
         die(var_dump($pdo->errorInfo()));
@@ -119,4 +119,29 @@ function getAllPosts($pdo)
     $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
 
     return $posts;
+}
+
+/**
+ * Returns post by id
+ * 
+ * @param int $postId
+ * @param PDO $pdo
+ * 
+ * @return array
+ */
+function getPostById(int $postId, PDO $pdo)
+{
+    $statement = $pdo->prepare('SELECT * FROM posts WHERE id = :id');
+
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+
+    $statement->execute([
+        'id' => $postId
+    ]);
+
+    $post = $statement->fetch(PDO::FETCH_ASSOC);
+
+    return $post;
 }
