@@ -15,7 +15,7 @@ isLoggenIn();
 
 <section class="create-post flex-col-cen">
     <h2 class="mt15">New post</h2>
-    <form action="/app/posts/create-post.php" method="post" enctype="multipart/form-data" class="flex-col-cen">
+    <form action="/app/posts/create-post.php" method="post" enctype="multipart/form-data" class="create-post__form flex-col-cen">
         <div class="create-post__image-frame bblg btlg mt15">
             <img id="image">
         </div>
@@ -25,7 +25,7 @@ isLoggenIn();
             <input type="file" name="post-image" id="files" required>
         </div>
 
-        <div class="create-post__caption flex-col mt15">
+        <div class="create-post__caption flex-col-cen mt15">
             <label for="post-caption">Caption:</label>
             <textarea name="post-caption" class="mt15"></textarea>
         </div>

@@ -8,12 +8,15 @@ require __DIR__ . '/views/navigation.php';
 
 isLoggenIn();
 
-$userId = (int) $_SESSION['user']['id'];
+// Fetching user data 
+$userId = $_SESSION['user']['id'];
+
+$user = getUserById((int) $userId, $pdo);
 
 // Fetching posts 
 $posts = getAllPosts($pdo);
 
-//var_dump($posts[1]);
+// var_dump($posts);
 
 ?>
 
@@ -22,8 +25,16 @@ $posts = getAllPosts($pdo);
         <?php foreach ($posts as $post) : ?>
             <div class="feed__post">
                 <div class="post__header bblg w-full">
-                    <img src="/app/users/avatar/<?php echo $post['avatar']; ?>" alt="avatar">
-                    <h4><?php echo $post['first_name'] . ' ' . $post['last_name']; ?></h4>
+                    <div class="post__header-profile">
+                        <img src="/app/users/avatar/<?php echo $post['avatar']; ?>" alt="avatar">
+                        <h4><?php echo $post['first_name'] . ' ' . $post['last_name']; ?></h4>
+                    </div>
+                    <div class="post__header-edit">
+                        <?php if ($userId === $post['user_id']) : ?>
+                            <!--Edit post-button - shown if the post belongs to the user-->
+                            <a href="/edit-post.php?id=<?php echo $post['id']; ?>" title="Edit post"><button>Edit</button></a>
+                        <?php endif; ?>
+                    </div>
                 </div>
 
                 <div class="post__image">

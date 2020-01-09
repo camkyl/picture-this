@@ -5,7 +5,7 @@ declare(strict_types=1);
 
 require __DIR__ . '/../autoload.php';
 
-// In this file we upload users posts
+// In this file we upload users posts to the database
 
 if (isset($_FILES['post-image'], $_POST['post-caption'])) {
     $image = $_FILES['post-image'];
