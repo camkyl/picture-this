@@ -100,7 +100,7 @@ function getUserById(int $userId, PDO $pdo)
 }
 
 /**
- * Returns posts from all users
+ * Returns all posts
  * 
  * @param PDO $pdo
  * 

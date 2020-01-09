@@ -1,7 +1,8 @@
 .create-post {
-  height: 100vh;
+  min-height: 90vh;
   width: 100vw;
   background-color: var(--white);
+  overflow: scroll;
 }
 
 .create-post h2,
@@ -11,16 +12,19 @@
   font-weight: bolder;
 }
 
+.create-post__form {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
 .create-post__image-frame {
-  width: 100vw;
-  max-height: 50vh;
-  overflow: scroll;
+  width: 100%;
 }
 
 .create-post__image-frame img {
   display: block;
   margin: 0;
-  width: 100vw;
+  width: 100%;
 }
 
 /*remove default "choose image" input text*/
@@ -42,10 +46,13 @@
   top: 0;
   opacity: 0;
 }
+.create-post__caption {
+  width: 100%;
+}
 
 .create-post__caption textarea {
   all: unset;
-  width: 90vw;
+  width: 90%;
   height: 14vh;
   color: var(--grey);
   border-top: 0.5px solid var(--black-transparent);
@@ -60,4 +67,11 @@
   font-size: 14px;
   padding: 8px 20px;
   font-weight: bolder;
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .create-post {
+    width: 55vw;
+  }
 }

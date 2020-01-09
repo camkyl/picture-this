@@ -16,16 +16,28 @@ main {
 }
 
 .post__header {
+  width: 100%;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 10px;
 }
 
-.post__header img {
+.post__header-profile {
+  display: flex;
+  align-items: center;
+}
+
+.post__header-profile img {
   width: 11vw;
   height: 11vw;
   border-radius: 50%;
   margin-right: 10px;
+}
+
+.post__header-edit button {
+  font-size: 13px;
+  font-weight: bolder;
 }
 
 .post__likes img {
@@ -68,7 +80,8 @@ main {
     align-items: center;
   }
 
-  main {
+  main,
+  .feed {
     width: 55vw;
   }
 
