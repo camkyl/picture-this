@@ -25,7 +25,7 @@ The application is responsive and is built using the method mobile-first.
 - [x] As a user I should be able to upload a profile avatar image.
 - [x] As a user I should be able to create new posts with image and description.
 - [x] As a user I should be able to edit my posts.
-- As a user I should be able to delete my posts.
+- [x] As a user I should be able to delete my posts.
 - As a user I should be able to like posts.
 - As a user I should be able to remove likes from posts.
 
