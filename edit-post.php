@@ -30,4 +30,8 @@ $postToEdit = getPostByID((int) $postId, $pdo);
 
         <button type="submit" class="mt15">Update</button>
     </form>
+
+    <form action="/app/posts/delete-post.php?id=<?php echo $postToEdit['id']; ?>" method="post" class="flex-col-cen">
+        <button class="delete-post-button">Delete post</button>    
+    </form>
 </section>

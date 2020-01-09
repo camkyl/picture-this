@@ -22,6 +22,12 @@ $posts = getAllPosts($pdo);
 
 <main>
     <section class="feed">
+        <div class="message">
+            <?php
+            displayErrorMessage();
+            displayConfirmationMessage();
+            ?>
+        </div>
         <?php foreach ($posts as $post) : ?>
             <div class="feed__post">
                 <div class="post__header bblg w-full">
