@@ -8,6 +8,7 @@ main {
 .feed {
   width: 100vw;
   margin-bottom: 24px;
+  overflow-x: hidden;
 }
 
 .w-full {
@@ -27,12 +28,20 @@ main {
   margin-right: 10px;
 }
 
+.post__likes img {
+  width: 6vw;
+  height: 6vw;
+  margin-right: 10px;
+}
+
 .post__text-content {
   padding: 10px;
 }
 
 .post__caption {
   display: flex;
+  color: var(--dark-grey);
+  margin-top: 5px;
 }
 
 .post__caption h4 {
@@ -40,8 +49,17 @@ main {
 }
 
 .post__image {
-  height: 25vh;
-  background-color: #cecece;
+  width: 100%;
+}
+
+.post__image img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.post__comments {
+  margin: 4px 0px 0px 4px;
+  color: var(--grey);
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -61,5 +79,18 @@ main {
   .post__header img {
     width: 4vw;
     height: 4vw;
+  }
+
+  .post__image {
+    width: 55vw;
+  }
+
+  .post__text-content {
+    padding-left: 20px;
+  }
+
+  .post__likes img {
+    width: 2vw;
+    height: 2vw;
   }
 }
