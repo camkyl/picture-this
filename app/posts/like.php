@@ -8,7 +8,6 @@ require __DIR__ . '/../autoload.php';
 // In this file we add or remove likes on posts in the database
 
 if (isset($_POST['like-post'])) {
-    //die(var_dump($_POST));
     $postId = (int) $_POST['like-post'];
     $userId = (int) $_SESSION['user']['id'];
 

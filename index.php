@@ -9,9 +9,10 @@ require __DIR__ . '/views/navigation.php';
 isLoggenIn();
 
 // Logged in user:
-$userId = $_SESSION['user']['id'];
+$userId = (int) $_SESSION['user']['id'];
 
-// $user = getUserById((int) $userId, $pdo);
+$user = getUserById((int) $userId, $pdo);
+
 
 ?>
 
@@ -28,6 +29,7 @@ $userId = $_SESSION['user']['id'];
         $posts = getAllPosts($pdo);
         foreach ($posts as $post) :
             $postId = $post['id'];
+            $postUser = (int) $post['user_id'];
         ?>
             <div class="feed__post">
                 <div class="post__header bblg w-full">
@@ -41,6 +43,21 @@ $userId = $_SESSION['user']['id'];
                             <!--Edit post-button - shown if the post belongs to the user-->
                             <a href="/edit-post.php?id=<?php echo $post['id']; ?>" title="Edit post"><button>Edit</button></a>
                         <?php endif; ?>
+                    </div>
+
+                    <?php
+                    $follow = isFollowing($pdo, (int) $userId, (int) $postUser);
+                    $follower = $follow['user_id'];
+                    ?>
+                    <div class="profile__follow">
+                        <form action="/app/users/follow.php" method="post">
+                            <input type="hidden" name="following" value="<?php echo $postUser; ?>"></input>
+                            <?php if ($follower == $userId) : ?>
+                                <button name="follower" value="<?php echo $userId; ?>">Unfollow</button>
+                            <?php else : ?>
+                                <button name="follower" value="<?php echo $userId; ?>">Follow</button>
+                            <?php endif; ?>
+                        </form>
                     </div>
                 </div>
 
@@ -57,9 +74,9 @@ $userId = $_SESSION['user']['id'];
                         <form action="/app/posts/like.php" method="post">
                             <button class="like-button" name="like-post" value="<?php echo $post['id']; ?>">
                                 <?php if ($userThatHasLiked === $userId) : ?>
-                                    <img src="/views/icons/liked.svg" alt="Heart" id="heart">
+                                    <img src="/views/icons/liked.svg" alt="Post is liked">
                                 <?php else : ?>
-                                    <img src="/views/icons/heart.svg" alt="Heart" id="heart">
+                                    <img src="/views/icons/heart.svg" alt="Post is not liked">
                                 <?php endif; ?>
                             </button>
                         </form>

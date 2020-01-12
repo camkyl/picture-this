@@ -29,6 +29,10 @@ The application is responsive and is built using the method mobile-first.
 - [x] As a user I should be able to like posts.
 - [x] As a user I should be able to remove likes from posts.
 
+## Extra features
+
+- [x] As a user I should be able to follow/unfollow users
+
 ## Preview
  TBA
 

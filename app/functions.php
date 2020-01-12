@@ -202,3 +202,28 @@ function numberOfLikes(PDO $pdo, int $postId)
 
     return $likes;
 }
+
+/**
+ * Checking if user is following another user
+ * 
+ * @param PDO $pdo
+ * @param int $follower
+ * @param int $isFollowingUserId
+ * 
+ * @return array 
+ */
+function isFollowing(PDO $pdo, int $follower, int $isFollowingUserId)
+{
+    $statement = $pdo->prepare('SELECT * FROM follows WHERE user_id = :user_id AND following_user_id = :is_following_id');
+
+    sqlQueryError($pdo, $statement);
+
+    $statement->execute([
+        ':user_id' => $follower,
+        ':is_following_id' => $isFollowingUserId
+    ]);
+
+    $isFollowed = $statement->fetch(PDO::FETCH_ASSOC);
+
+    return $isFollowed;
+}

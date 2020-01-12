@@ -8,6 +8,10 @@ require __DIR__ . '/views/navigation.php';
 
 isLoggenIn();
 
+$userId = $_SESSION['user']['id'];
+$user = getUserById((int) $userId, $pdo);
+
+//die(var_dump($user));
 ?>
 
 <section class="profile">
@@ -40,18 +44,27 @@ isLoggenIn();
         </div>
 
         <div class="profile__bio flex-cen">
-            <p><?php
+            <p>
+                <?php
                 if ($_SESSION['user']['biography'] === null) {
                     echo 'No bio entered';
                 } else {
                     echo $_SESSION['user']['biography'];
                 }
-                ?></p>
+                ?>
+            </p>
         </div>
-
-        <div class="profile__edit flex-cen">
-            <a class="" href="/edit-profile.php">Edit profile</a>
-        </div>
+        <?php if (isset($userId)) : ?>
+            <div class="profile__edit flex-cen">
+                <a class="" href="/edit-profile.php">Edit profile</a>
+            </div>
+        <?php else : ?>
+            <div class="profile__follow">
+                <form action="/app/users/follow.php" method="post">
+                    <button name="follow" value="<?php echo $user['id']; ?>">Follow</button>
+                </form>
+            </div>
+        <?php endif; ?>
     </div>
 
     <div class="profile__posts">
