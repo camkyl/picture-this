@@ -23,10 +23,7 @@ if (isset($_POST['first-name'], $_POST['last-name'], $_POST['email'], $_POST['pa
     // An email can't be used twice
     $statement = $pdo->prepare('SELECT * FROM users WHERE email = :email');
 
-    if (!$statement) {
-        // PHP doesn't print SQL errors in the browser
-        die(var_dump($pdo->errorInfo()));
-    }
+    sqlQueryError($pdo, $statement);
 
     // Binding parameters with variables and running the script
     $statement->execute([

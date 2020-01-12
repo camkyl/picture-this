@@ -75,6 +75,21 @@ function GUID()
 }
 
 /**
+ * Function printing SQL error
+ * 
+ * @param PDO $pdo
+ * @param object $statement
+ * 
+ * @return array 
+ */
+function sqlQueryError($pdo, $statement)
+{
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+}
+
+/**
  * Returns user data
  * 
  * @param int $userId
@@ -86,9 +101,7 @@ function getUserById(int $userId, PDO $pdo)
 {
     $statement = $pdo->prepare('SELECT * FROM users WHERE id = :id');
 
-    if (!$statement) {
-        die(var_dump($pdo->errorInfo()));
-    }
+    sqlQueryError($pdo, $statement);
 
     $statement->execute([
         ':id' => $userId
@@ -110,9 +123,7 @@ function getAllPosts($pdo)
 {
     $statement = $pdo->prepare('SELECT posts.id, posts.user_id, posts.post_image, posts.post_caption, posts.date, users.first_name, users.last_name, users.avatar FROM posts JOIN users ON posts.user_id = users.id ORDER BY posts.date DESC');
 
-    if (!$statement) {
-        die(var_dump($pdo->errorInfo()));
-    }
+    sqlQueryError($pdo, $statement);
 
     $statement->execute();
 
@@ -133,9 +144,7 @@ function getPostById(int $postId, PDO $pdo)
 {
     $statement = $pdo->prepare('SELECT * FROM posts WHERE id = :id');
 
-    if (!$statement) {
-        die(var_dump($pdo->errorInfo()));
-    }
+    sqlQueryError($pdo, $statement);
 
     $statement->execute([
         'id' => $postId
@@ -144,4 +153,52 @@ function getPostById(int $postId, PDO $pdo)
     $post = $statement->fetch(PDO::FETCH_ASSOC);
 
     return $post;
+}
+
+/**
+ * Checking if user has liked post
+ * 
+ * @param PDO $pdo
+ * @param int $userId
+ * @param int $postId
+ * 
+ * @return array 
+ */
+function userHasLiked(PDO $pdo, int $userId, int $postId)
+{
+    $statement = $pdo->prepare('SELECT * FROM likes WHERE post_id = :post_id AND liked_by_user_id = :user_id');
+
+    sqlQueryError($pdo, $statement);
+
+    $statement->execute([
+        ':user_id' => $userId,
+        ':post_id' => $postId,
+    ]);
+
+    $isLiked = $statement->fetch(PDO::FETCH_ASSOC);
+
+    return $isLiked;
+}
+
+/**
+ * Get number of likes on a post
+ * 
+ * @param PDO $pdo
+ * @param int $postId
+ * 
+ * @return int
+ */
+function numberOfLikes(PDO $pdo, int $postId)
+{
+    $statement = $pdo->prepare('SELECT COUNT(post_id) FROM likes where post_id = :post_id');
+
+    sqlQueryError($pdo, $statement);
+
+    $statement->execute([
+        ':post_id' => $postId
+    ]);
+
+    $likes = $statement->fetch(PDO::FETCH_ASSOC);
+
+    return $likes;
 }
