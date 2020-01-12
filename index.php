@@ -8,15 +8,10 @@ require __DIR__ . '/views/navigation.php';
 
 isLoggenIn();
 
-// Fetching user data 
+// Logged in user:
 $userId = $_SESSION['user']['id'];
 
-$user = getUserById((int) $userId, $pdo);
-
-// Fetching posts 
-$posts = getAllPosts($pdo);
-
-// var_dump($posts);
+// $user = getUserById((int) $userId, $pdo);
 
 ?>
 
@@ -28,13 +23,19 @@ $posts = getAllPosts($pdo);
             displayConfirmationMessage();
             ?>
         </div>
-        <?php foreach ($posts as $post) : ?>
+
+        <?php
+        $posts = getAllPosts($pdo);
+        foreach ($posts as $post) :
+            $postId = $post['id'];
+        ?>
             <div class="feed__post">
                 <div class="post__header bblg w-full">
                     <div class="post__header-profile">
                         <img src="/app/users/avatar/<?php echo $post['avatar']; ?>" alt="avatar">
                         <h4><?php echo $post['first_name'] . ' ' . $post['last_name']; ?></h4>
                     </div>
+
                     <div class="post__header-edit">
                         <?php if ($userId === $post['user_id']) : ?>
                             <!--Edit post-button - shown if the post belongs to the user-->
@@ -47,14 +48,41 @@ $posts = getAllPosts($pdo);
                     <img src="/app/posts/uploads/<?php echo $post['post_image'] ?>" alt="Post image">
                 </div>
 
+                <?php
+                $likedPost = userHasLiked($pdo, (int) $userId, (int) $postId);
+                $userThatHasLiked = $likedPost['liked_by_user_id'];
+                ?>
                 <div class="post__text-content">
                     <div class="post__likes w-full">
-                        <img src="/views/icons/heart.svg" alt="Heart">
+                        <form action="/app/posts/like.php" method="post">
+                            <button class="like-button" name="like-post" value="<?php echo $post['id']; ?>">
+                                <?php if ($userThatHasLiked === $userId) : ?>
+                                    <img src="/views/icons/liked.svg" alt="Heart" id="heart">
+                                <?php else : ?>
+                                    <img src="/views/icons/heart.svg" alt="Heart" id="heart">
+                                <?php endif; ?>
+                            </button>
+                        </form>
                         <img src="/views/icons/comment.svg" alt="Comment">
                     </div>
 
+                    <div class="number-of-likes">
+                        <?php
+                        $likes = numberOfLikes($pdo, (int) $postId);
+                        ?>
+                        <?php foreach ($likes as $like) : ?>
+                            <?php if ($like == 0) : ?>
+                                <h5>Be the first one to like this post</h5>
+                            <?php elseif ($like == 1) : ?>
+                                <h5><?php echo $like; ?> person likes this</h5>
+                            <?php else : ?>
+                                <h5><?php echo $like; ?> people likes this</h5>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </div>
+
                     <div class="post__caption w-full">
-                        <h4><?php echo $post['first_name'] . ' ' . $post['last_name']; ?></h4>
+                        <h5><?php echo $post['first_name'] . ' ' . $post['last_name']; ?></h5>
                         <p><?php echo $post['post_caption']; ?></p>
                     </div>
 
@@ -67,4 +95,4 @@ $posts = getAllPosts($pdo);
     </section>
 </main>
 
-<?php require(__DIR__ . '/views/footer.php'); ?>
+<?php require __DIR__ . '/views/footer.php'; ?>

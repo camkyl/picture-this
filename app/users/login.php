@@ -16,10 +16,7 @@ if (isset($_POST['email'], $_POST['password'])) {
     // Preparing SQL query to check if the email exist
     $statement = $pdo->prepare('SELECT * FROM users WHERE email = :email');
 
-    if (!$statement) {
-        // PHP doesn't print SQL errors in the browser
-        die(var_dump($pdo->errorInfo()));
-    }
+    sqlQueryError($pdo, $statement);
 
     // Binding parameters with variables and running the script
     $statement->execute([

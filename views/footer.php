@@ -28,6 +28,7 @@ declare(strict_types=1);
     </a>
 </footer>
 
+<script src="/assets/scripts/like.js"></script>
 </body>
 
 </html>

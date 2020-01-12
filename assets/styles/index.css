@@ -40,10 +40,18 @@ main {
   font-weight: bolder;
 }
 
+.post__likes {
+  display: flex;
+}
+
 .post__likes img {
   width: 6vw;
   height: 6vw;
   margin-right: 10px;
+}
+
+.like-button {
+  all: unset;
 }
 
 .post__text-content {
