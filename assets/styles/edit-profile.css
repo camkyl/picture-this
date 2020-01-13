@@ -1,6 +1,8 @@
 .edit-profile {
-  height: 100vh;
+  height: 83vh;
   width: 100vw;
+  overflow-x: hidden;
+  overflow-y: scroll;
   background-color: var(--white);
 }
 
@@ -48,7 +50,7 @@ form.personal__text input {
 form.personal__text textarea {
   all: unset;
   width: 68vw;
-  height: 20vh;
+  height: 16vh;
   color: var(--grey);
 }
 
@@ -60,6 +62,7 @@ form.personal__text button {
   font-size: 14px;
   padding: 8px 20px;
   font-weight: bolder;
+  margin-bottom: 10px;
 }
 
 .personal__biography {

@@ -13,7 +13,6 @@ $userId = (int) $_SESSION['user']['id'];
 
 $user = getUserById((int) $userId, $pdo);
 
-
 ?>
 
 <main>
@@ -39,22 +38,24 @@ $user = getUserById((int) $userId, $pdo);
                     </div>
 
                     <div class="post__header-edit">
-                        <?php if ($userId === $post['user_id']) : ?>
+                        <?php if ($userId == $post['user_id']) : ?>
                             <!--Edit post-button - shown if the post belongs to the user-->
                             <a href="/edit-post.php?id=<?php echo $post['id']; ?>" title="Edit post"><button>Edit</button></a>
                         <?php endif; ?>
                     </div>
 
                     <?php
-                    $follow = isFollowing($pdo, (int) $userId, (int) $postUser);
-                    $follower = $follow['user_id'];
+                    isFollowing($pdo, (int) $userId, (int) $postUser);
+                    // $follower = $follow['user_id'];
+                    // var_dump($follow);
+                    // var_dump($userId);
                     ?>
                     <div class="profile__follow">
                         <form action="/app/users/follow.php" method="post">
                             <input type="hidden" name="following" value="<?php echo $postUser; ?>"></input>
-                            <?php if ($follower == $userId) : ?>
+                            <?php if (isFollowing($pdo, (int) $userId, (int) $postUser)) : ?>
                                 <button name="follower" value="<?php echo $userId; ?>">Unfollow</button>
-                            <?php else : ?>
+                            <?php elseif (!isFollowing($pdo, (int) $userId, (int) $postUser)) : ?>
                                 <button name="follower" value="<?php echo $userId; ?>">Follow</button>
                             <?php endif; ?>
                         </form>

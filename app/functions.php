@@ -140,7 +140,7 @@ function getAllPosts($pdo)
  * 
  * @return array
  */
-function getPostById(int $postId, PDO $pdo)
+function getPostById(PDO $pdo, int $postId)
 {
     $statement = $pdo->prepare('SELECT * FROM posts WHERE id = :id');
 
@@ -153,6 +153,29 @@ function getPostById(int $postId, PDO $pdo)
     $post = $statement->fetch(PDO::FETCH_ASSOC);
 
     return $post;
+}
+
+/**
+ * Returns post by user
+ * 
+ * @param PDO $pdo
+ * @param int $userId
+ * 
+ * @return array
+ */
+function getPostsByUser(PDO $pdo, int $userId)
+{
+    $statement = $pdo->prepare('SELECT * FROM posts WHERE user_id = :id');
+
+    sqlQueryError($pdo, $statement);
+
+    $statement->execute([
+        'id' => $userId
+    ]);
+
+    $postByUser = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    return $postByUser;
 }
 
 /**
