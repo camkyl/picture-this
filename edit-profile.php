@@ -21,7 +21,11 @@ isLoggenIn();
 
         <form action="/app/users/edit-avatar.php" method="post" enctype="multipart/form-data" class="personal__avatar flex-col-cen">
             <div class="profile__image">
-                <img src="/app/users/avatar/<?php echo $_SESSION['user']['avatar']; ?>">
+                <?php if ($_SESSION['user']['avatar'] === null) : ?>
+                    <img src="/app/users/avatar/placeholder2.png" alt="Profile picture">
+                <?php else : ?>
+                    <img src="/app/users/avatar/<?php echo $_SESSION['user']['avatar']; ?>">
+                <?php endif; ?>
             </div>
             <div class="profile__image-edit">
                 <label for="avatar">Edit profile picture</label>
@@ -52,3 +56,9 @@ isLoggenIn();
         </form>
     </div>
 </section>
+
+<?php
+
+require __DIR__ . '/views/footer.php';
+
+?>

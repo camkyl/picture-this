@@ -73,7 +73,7 @@ $user = getUserById((int) $userId, $pdo);
                     <div class="post__likes w-full">
                         <form action="/app/posts/like.php" method="post">
                             <button class="like-button" name="like-post" value="<?php echo $post['id']; ?>">
-                                <?php if ($userThatHasLiked === $userId) : ?>
+                                <?php if ($userThatHasLiked == $userId) : ?>
                                     <img src="/views/icons/liked.svg" alt="Post is liked">
                                 <?php else : ?>
                                     <img src="/views/icons/heart.svg" alt="Post is not liked">
@@ -106,6 +106,11 @@ $user = getUserById((int) $userId, $pdo);
                     <div class="post__comments w-full">
                         <p>Post comments..</p>
                     </div>
+
+                    <!-- <div>
+                        <p><?php //echo $post['date']; 
+                            ?></p>
+                    </div> -->
                 </div>
             </div>
         <?php endforeach; ?>

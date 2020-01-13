@@ -15,9 +15,20 @@ $user = getUserById((int) $userId, $pdo);
 ?>
 
 <section class="profile">
+    <div class="message">
+        <?php
+        displayErrorMessage();
+        displayConfirmationMessage();
+        ?>
+    </div>
+
     <div class="profile__intro">
         <div class="profile__image flex-col-cen">
-            <img src="/app/users/avatar/<?php echo $_SESSION['user']['avatar']; ?>">
+            <?php if ($_SESSION['user']['avatar'] === null) : ?>
+                <img src="/app/users/avatar/placeholder2.png" alt="Profile picture">
+            <?php else : ?>
+                <img src="/app/users/avatar/<?php echo $_SESSION['user']['avatar']; ?>">
+            <?php endif; ?>
         </div>
 
         <h3 class="profile__name flex-cen">
@@ -68,7 +79,7 @@ $user = getUserById((int) $userId, $pdo);
     </div>
 
     <div class="profile__posts">
-        <p>posts will be desiplayed here..</p>
+        <p>posts will be displayed here..</p>
     </div>
 </section>
 
