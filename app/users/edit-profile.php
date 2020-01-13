@@ -52,5 +52,5 @@ if (isset($_POST['first-name'], $_POST['last-name'], $_POST['biography'])) {
     // Confirmation message displayed on client side
     $_SESSION['messages'][] = 'Profile successfully updated!';
 
-    redirect('/edit-profile.php');
+    redirect('/profile.php');
 }
