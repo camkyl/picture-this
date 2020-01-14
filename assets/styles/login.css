@@ -85,6 +85,11 @@
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+  .log-in-page,
+  .sign-up-page {
+    width: 65vw;
+  }
+
   .not-logged-in-input {
     width: 26vw;
   }

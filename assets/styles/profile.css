@@ -1,12 +1,16 @@
 .profile {
+  width: 100vw;
+  min-height: 83vh;
   background-color: var(--white);
-  height: 83vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
-  justify-content: stretch;
+  /* justify-content: stretch; */
 }
 
 .profile__intro {
+  width: 100%;
   border-bottom: 0.5px solid var(--black-transparent);
 }
 
@@ -51,9 +55,29 @@
 }
 
 .profile__posts {
-  overflow-y: scroll;
+  width: 100%;
   /*makes the div stretch to cover the rest of the space available*/
   flex: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.profile__posts-image {
+  overflow: hidden;
+  margin-top: 5px;
+  width: 33.33%;
+  height: 130px;
+  border: 0.5px solid var(--white);
+}
+
+.profile__posts-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -70,11 +94,16 @@
   .profile__name {
     font-size: 24px;
   }
+
   .profile__stats h5 {
     font-size: 18px;
   }
 
   .profile__edit a {
     width: 10vw;
+  }
+
+  .profile__posts-image {
+    height: 260px;
   }
 }

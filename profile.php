@@ -11,7 +11,7 @@ isLoggenIn();
 $userId = $_SESSION['user']['id'];
 $user = getUserById((int) $userId, $pdo);
 
-//die(var_dump($user));
+// die(var_dump($user));
 ?>
 
 <section class="profile">
@@ -79,7 +79,13 @@ $user = getUserById((int) $userId, $pdo);
     </div>
 
     <div class="profile__posts">
-        <p>posts will be displayed here..</p>
+        <?php $postByUser = getPostsByUser($pdo, (int) $userId); ?>
+        <?php foreach ($postByUser as $postImage) : ?>
+            <div class="profile__posts-image">
+                <img src="/app/posts/uploads/<?php echo $postImage['post_image']; ?>">
+            </div>
+        <?php endforeach;
+        ?>
     </div>
 </section>
 
