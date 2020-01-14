@@ -44,6 +44,7 @@ form.personal__text label {
 form.personal__text input {
   all: unset;
   width: 68vw;
+  padding-bottom: 6px;
   color: var(--grey);
 }
 
@@ -71,17 +72,13 @@ form.personal__text button {
   margin-bottom: 20px;
 }
 
-.w50 {
-  display: flex;
-}
-
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   .edit-profile {
     width: 55vw;
   }
 
-  .w50 {
+  .flex {
     width: 50%;
   }
 

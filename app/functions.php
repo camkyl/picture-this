@@ -250,3 +250,27 @@ function isFollowing(PDO $pdo, int $follower, int $isFollowingUserId)
 
     return $isFollowed;
 }
+
+if (!function_exists('postedAgo')) {
+    /**
+     * Returns how long it has been
+     *
+     * @param [type] $postDate
+     * @return string
+     */
+    function postedAgo(string $postDate): string
+    {
+        $todaysDate = date("Y-m-d H:i:s");
+        $ago = strtotime($todaysDate) - strtotime($postDate);
+        if ($ago >= 86400) {
+            $diff = floor($ago / 86400) . ' days ago';
+        } elseif ($ago >= 3600) {
+            $diff = floor($ago / 3600) . ' hours ago';
+        } elseif ($ago >= 60) {
+            $diff = floor($ago / 60) . ' minutes ago';
+        } else {
+            $diff = 'a few seconds ago';
+        }
+        return $diff;
+    }
+}

@@ -71,17 +71,29 @@ $user = getUserById((int) $userId, $pdo);
                 $userThatHasLiked = $likedPost['liked_by_user_id'];
                 ?>
                 <div class="post__text-content">
-                    <div class="post__likes w-full">
-                        <form action="/app/posts/like.php" method="post">
-                            <button class="like-button" name="like-post" value="<?php echo $post['id']; ?>">
-                                <?php if ($userThatHasLiked == $userId) : ?>
-                                    <img src="/views/icons/liked.svg" alt="Post is liked">
-                                <?php else : ?>
-                                    <img src="/views/icons/heart.svg" alt="Post is not liked">
-                                <?php endif; ?>
-                            </button>
-                        </form>
-                        <img src="/views/icons/comment.svg" alt="Comment">
+                    <div class="post__text-content-header w-full">
+                        <div class="flex">
+                            <form action="/app/posts/like.php" method="post">
+                                <button class="like-button" name="like-post" value="<?php echo $post['id']; ?>">
+                                    <?php if ($userThatHasLiked == $userId) : ?>
+                                        <img src="/views/icons/liked.svg" alt="Post is liked">
+                                    <?php else : ?>
+                                        <img src="/views/icons/heart.svg" alt="Post is not liked">
+                                    <?php endif; ?>
+                                </button>
+                            </form>
+
+                            <img src="/views/icons/comment.svg" alt="Comment">
+                        </div>
+
+                        <div class="date">
+                            <p>
+                                <?php
+                                $postedDate = $post['date'];
+                                echo postedAgo($postedDate);
+                                ?>
+                            </p>
+                        </div>
                     </div>
 
                     <div class="number-of-likes">
@@ -107,11 +119,6 @@ $user = getUserById((int) $userId, $pdo);
                     <div class="post__comments w-full">
                         <p>Post comments..</p>
                     </div>
-
-                    <!-- <div>
-                        <p><?php //echo $post['date']; 
-                            ?></p>
-                    </div> -->
                 </div>
             </div>
         <?php endforeach; ?>
