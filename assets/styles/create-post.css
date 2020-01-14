@@ -32,6 +32,10 @@
 .edit-post__image-frame {
   width: 100%;
   min-height: 210px;
+  background-image: url(/app/posts/uploads/img_placeholder.png);
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
 }
 
 .create-post__image-frame img,

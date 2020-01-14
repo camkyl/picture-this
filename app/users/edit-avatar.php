@@ -9,7 +9,7 @@ require __DIR__ . '/../autoload.php';
 // In this file we add or edit the users avatar.
 
 if (isset($_FILES['avatar'])) {
-    // die(var_dump($_FILES['avatar']));
+    die(var_dump($_FILES['avatar']));
     // array(5) { 
     // ["name"]=> string(7) "hej.jpg" 
     // ["type"]=> string(10) "image/jpeg" 
