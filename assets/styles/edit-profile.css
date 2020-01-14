@@ -28,34 +28,30 @@
   width: 90px;
 }
 
-.personal__avatar {
-  margin-bottom: 20px;
-}
-
-form.personal__text {
+.personal__text {
   width: 100%;
 }
 
-form.personal__text label {
+.personal__text label {
   display: inline-block;
   width: 22vw;
 }
 
-form.personal__text input {
+.personal__text input {
   all: unset;
   width: 68vw;
   padding-bottom: 6px;
   color: var(--grey);
 }
 
-form.personal__text textarea {
+.personal__text textarea {
   all: unset;
   width: 68vw;
-  height: 16vh;
+  height: 15vh;
   color: var(--grey);
 }
 
-form.personal__text button {
+.personal__text button {
   background-image: var(--icon-color);
   border-radius: 20px;
   color: var(--white);
@@ -82,17 +78,16 @@ form.personal__text button {
     width: 50%;
   }
 
-  form.personal__text label {
+  .personal__text label {
     width: 30%;
   }
 
-  form.personal__text input {
+  .personal__text input {
     width: 70%;
     color: var(--grey);
   }
 
-  form.personal__text textarea {
+  .personal__text textarea {
     width: 70%;
-    height: 20vh;
   }
 }

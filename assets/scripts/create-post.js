@@ -1,12 +1,12 @@
 "use strict";
 
 // Script previewing image before uploading it
-document.getElementById("files").onchange = function() {
+document.querySelector(".jsfiles").onchange = function() {
   let reader = new FileReader();
 
   reader.onload = function(e) {
     // Get loaded data and render thumbnail.
-    document.getElementById("image").src = e.target.result;
+    document.querySelector(".jsimage").src = e.target.result;
   };
 
   // Read the image file as a data URL.

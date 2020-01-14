@@ -28,6 +28,7 @@ declare(strict_types=1);
     </a>
 </footer>
 
+
 </body>
 
 </html>
