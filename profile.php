@@ -1,6 +1,5 @@
 <?php
 // Front-end
-declare(strict_types=1);
 
 require __DIR__ . '/views/header.php';
 
@@ -12,8 +11,7 @@ $userId = (int) $_SESSION['user']['id'];
 $user = getUserById((int) $userId, $pdo);
 
 //var_dump($userId);
-
-//die(var_dump($user));
+//var_dump($user);
 
 ?>
 
@@ -100,10 +98,14 @@ $user = getUserById((int) $userId, $pdo);
     </div>
 
     <div class="profile__posts">
+        <?php //var_dump(getPostsByUser($pdo, (int) $userId)); 
+        ?>
         <?php $postByUser = getPostsByUser($pdo, (int) $userId); ?>
         <?php foreach ($postByUser as $postImage) : ?>
             <div class="profile__posts-image">
-                <img src="/app/posts/uploads/<?php echo $postImage['post_image']; ?>">
+                <a href="view-post.php?id=<?php echo $postImage['id']; ?>" title="View post">
+                    <img src="/app/posts/uploads/<?php echo $postImage['post_image']; ?>">
+                </a>
             </div>
         <?php endforeach; ?>
     </div>

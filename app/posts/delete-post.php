@@ -23,6 +23,15 @@ if ($postUserId === $loggedInUserId) {
         ':id' => $postId
     ]);
 
+    // Preparing SQL query to delete post likes from database
+    $statement = $pdo->prepare('DELETE FROM likes WHERE post_id = :id');
+
+    sqlQueryError($pdo, $statement);
+
+    $statement->execute([
+        ':id' => $postId
+    ]);
+
     $_SESSION['messages'][0] = 'Your post was successfully deleted.';
 
     redirect('/');

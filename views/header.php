@@ -23,6 +23,7 @@ require __DIR__ . '/../app/autoload.php';
     <link rel="stylesheet" href="/assets/styles/profile.css">
     <link rel="stylesheet" href="/assets/styles/edit-profile.css">
     <link rel="stylesheet" href="/assets/styles/create-post.css">
+    <link rel="stylesheet" href="/assets/styles/view-post.css">
     <link rel="stylesheet" href="/assets/styles/footer.css">
     <style>
         @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro|Ubuntu|Poppins&display=swap');

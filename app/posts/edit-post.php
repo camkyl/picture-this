@@ -7,13 +7,13 @@ require __DIR__ . '/../autoload.php';
 
 // In this file we edit users posts in the database
 
-if(isset($_POST['edit-post-caption'])){
+if (isset($_POST['edit-post-caption'])) {
     $editedCaption = filter_var($_POST['edit-post-caption'], FILTER_SANITIZE_STRING);
     $postId = $_GET['id'];
-    
+
     $statement = $pdo->prepare('UPDATE posts SET post_caption = :editedCaption WHERE id = :postId');
 
-    if(!$statement) {
+    if (!$statement) {
         die(var_dump($pdo->errorInfo()));
     }
 
@@ -22,5 +22,5 @@ if(isset($_POST['edit-post-caption'])){
         ':postId' => $postId
     ]);
 
-    redirect('/');
+    redirect('/profile.php');
 }

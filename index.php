@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 require __DIR__ . '/views/header.php';
 
 require __DIR__ . '/views/navigation.php';
@@ -48,26 +46,19 @@ $user = getUserById((int) $userId, $pdo);
                         <h4><?php echo $post['first_name'] . ' ' . $post['last_name']; ?></h4>
                     </div>
 
-                    <div class="post__header-edit">
-                        <?php if ($userId == $post['user_id']) : ?>
-                            <!--Edit post-button - shown if the post belongs to the user-->
-                            <a href="/edit-post.php?id=<?php echo $post['id']; ?>" title="Edit post"><button>Edit</button></a>
-                        <?php endif; ?>
-                    </div>
-
                     <?php
                     isFollowing($pdo, (int) $userId, (int) $postUser);
-                    // $follower = $follow['user_id'];
-                    // var_dump($follow);
-                    // var_dump($userId);
                     ?>
                     <div class="profile__follow">
                         <form action="/app/users/follow.php" method="post">
                             <input type="hidden" name="following" value="<?php echo $postUser; ?>"></input>
-                            <?php if (isFollowing($pdo, (int) $userId, (int) $postUser)) : ?>
-                                <button name="follower" value="<?php echo $userId; ?>">Unfollow</button>
-                            <?php elseif (!isFollowing($pdo, (int) $userId, (int) $postUser)) : ?>
-                                <button name="follower" value="<?php echo $userId; ?>">Follow</button>
+                            <!--Only view follow/unfollow button on other users-->
+                            <?php if ($_SESSION['user']['id'] != $postUser) : ?>
+                                <?php if (isFollowing($pdo, (int) $userId, (int) $postUser)) : ?>
+                                    <button name="follower" value="<?php echo $userId; ?>">Unfollow</button>
+                                <?php elseif (!isFollowing($pdo, (int) $userId, (int) $postUser)) : ?>
+                                    <button name="follower" value="<?php echo $userId; ?>">Follow</button>
+                                <?php endif; ?>
                             <?php endif; ?>
                         </form>
                     </div>
