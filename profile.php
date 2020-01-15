@@ -8,19 +8,33 @@ require __DIR__ . '/views/navigation.php';
 
 isLoggenIn();
 
-$userId = $_SESSION['user']['id'];
+$userId = (int) $_SESSION['user']['id'];
 $user = getUserById((int) $userId, $pdo);
 
-// die(var_dump($user));
+//var_dump($userId);
+
+//die(var_dump($user));
+
 ?>
 
 <section class="profile">
-    <div class="message">
-        <?php
-        displayErrorMessage();
-        displayConfirmationMessage();
-        ?>
-    </div>
+    <?php if (isset($_SESSION['errors'][0])) : ?>
+        <div class="message">
+            <p>
+                <?php
+                displayErrorMessage();
+                ?>
+            </p>
+        </div>
+    <?php elseif (isset($_SESSION['messages'][0])) : ?>
+        <div class="message">
+            <p>
+                <?php
+                displayConfirmationMessage();
+                ?>
+            </p>
+        </div>
+    <?php endif; ?>
 
     <div class="profile__intro">
         <div class="profile__image flex-col-cen">
@@ -39,18 +53,24 @@ $user = getUserById((int) $userId, $pdo);
         <div class="profile__stats">
             <div class="flex-col-cen">
                 <h5>Posts</h5>
-                <p> 1 <?php //echo $_SESSION['user']['']; 
-                        ?></p>
+                <p>
+                    <?php
+                    $postCount = count(getPostsByUser($pdo, (int) $userId));
+                    echo $postCount;
+                    ?>
+                </p>
             </div>
             <div class="flex-col-cen">
                 <h5>Followers</h5>
-                <p> 49 <?php //echo $_SESSION['user']['']; 
-                        ?></p>
+                <p>
+                    <?php echo followersCount($pdo, (int) $userId); ?>
+                </p>
             </div>
             <div class="flex-col-cen">
                 <h5>Following</h5>
-                <p> 20 <?php //echo $_SESSION['user']['']; 
-                        ?></p>
+                <p>
+                    <?php echo followingsCount($pdo, (int) $userId); ?>
+                </p>
             </div>
         </div>
 
@@ -65,6 +85,7 @@ $user = getUserById((int) $userId, $pdo);
                 ?>
             </p>
         </div>
+
         <?php if (isset($userId)) : ?>
             <div class="profile__edit flex-cen">
                 <a class="" href="/edit-profile.php">Edit profile</a>
@@ -84,8 +105,7 @@ $user = getUserById((int) $userId, $pdo);
             <div class="profile__posts-image">
                 <img src="/app/posts/uploads/<?php echo $postImage['post_image']; ?>">
             </div>
-        <?php endforeach;
-        ?>
+        <?php endforeach; ?>
     </div>
 </section>
 

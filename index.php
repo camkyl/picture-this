@@ -17,12 +17,23 @@ $user = getUserById((int) $userId, $pdo);
 
 <main>
     <section class="feed">
-        <div class="message">
-            <?php
-            displayErrorMessage();
-            displayConfirmationMessage();
-            ?>
-        </div>
+        <?php if (isset($_SESSION['errors'][0])) : ?>
+            <div class="message">
+                <p>
+                    <?php
+                    displayErrorMessage();
+                    ?>
+                </p>
+            </div>
+        <?php elseif (isset($_SESSION['messages'][0])) : ?>
+            <div class="message">
+                <p>
+                    <?php
+                    displayConfirmationMessage();
+                    ?>
+                </p>
+            </div>
+        <?php endif; ?>
 
         <?php
         $posts = getAllPosts($pdo);

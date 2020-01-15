@@ -39,7 +39,7 @@ if (isset($_POST['first-name'], $_POST['last-name'], $_POST['email'], $_POST['pa
     // Email already exists in database 
     if ($isEmailExisting['email'] === $email) {
         // Error message printed in register.php (front-end) and user redirected back to register page
-        $_SESSION['errors'][] = 'Email exists';
+        $_SESSION['errors'][] = 'An account with the email entered already exists. Please log in or register with another email.';
         redirect('/register.php');
         // Stop script from running if email exists
         exit;

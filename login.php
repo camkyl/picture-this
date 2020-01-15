@@ -14,12 +14,16 @@ require __DIR__ . '/views/header.php';
         <h1>Log in</h1>
 
         <form action="/app/users/login.php" method="post" class="log-in-form">
-            <div class="error-message">
-                <!--Error message-->
-                <?php
-                displayErrorMessage();
-                ?>
-            </div>
+            <?php if (isset($_SESSION['errors'][0])) : ?>
+                <div class="message">
+                    <!--Error message-->
+                    <p>
+                        <?php
+                        displayErrorMessage();
+                        ?>
+                    </p>
+                </div>
+            <?php endif; ?>
 
             <div class="log-in-form__group flex-col">
                 <label for="email">Email</label>

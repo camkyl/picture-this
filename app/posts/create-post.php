@@ -44,5 +44,7 @@ if (isset($_FILES['post-image'], $_POST['post-caption'])) {
         ':user_id' => $id
     ]);
 
+    $_SESSION['messages'][] = 'Your post was successfully uploaded!';
+
     redirect('/');
 }

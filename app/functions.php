@@ -19,34 +19,6 @@ if (!function_exists('redirect')) {
 }
 
 /**
- * Displays error messages if they occur 
- * 
- * @return void
- */
-function displayErrorMessage()
-{
-    if (isset($_SESSION['errors'][0])) {
-
-        echo $_SESSION['errors'][0];
-        unset($_SESSION['errors']);
-    }
-}
-
-/**
- * Messages confirming success
- * 
- * @return void
- */
-function displayConfirmationMessage()
-{
-    if (isset($_SESSION['messages'][0])) {
-
-        echo $_SESSION['messages'][0];
-        unset($_SESSION['messages']);
-    }
-}
-
-/**
  * Redirects the user to the login page if she/he is not authorized to enter the page without being logged in
  * 
  * @return bool
@@ -112,6 +84,38 @@ function getUserById(int $userId, PDO $pdo)
     return $user;
 }
 
+/////////////////////////// MESSAGE ///////////////////////////
+
+/**
+ * Displays error messages if they occur 
+ * 
+ * @return void
+ */
+function displayErrorMessage()
+{
+    if (isset($_SESSION['errors'][0])) {
+
+        echo $_SESSION['errors'][0];
+        unset($_SESSION['errors']);
+    }
+}
+
+/**
+ * Messages confirming success
+ * 
+ * @return void
+ */
+function displayConfirmationMessage()
+{
+    if (isset($_SESSION['messages'][0])) {
+
+        echo $_SESSION['messages'][0];
+        unset($_SESSION['messages']);
+    }
+}
+
+/////////////////////////// POST ///////////////////////////
+
 /**
  * Returns all posts
  * 
@@ -165,7 +169,7 @@ function getPostById(PDO $pdo, int $postId)
  */
 function getPostsByUser(PDO $pdo, int $userId)
 {
-    $statement = $pdo->prepare('SELECT * FROM posts WHERE user_id = :id');
+    $statement = $pdo->prepare('SELECT * FROM posts WHERE user_id = :id ORDER BY date DESC');
 
     sqlQueryError($pdo, $statement);
 
@@ -177,6 +181,34 @@ function getPostsByUser(PDO $pdo, int $userId)
 
     return $postByUser;
 }
+
+if (!function_exists('postedAgo')) {
+    /**
+     * Calculates time since post was uploaded
+     *
+     * @param [type] $datePostWasUploaded
+     * @return string
+     */
+    function postedAgo(string $datePostWasUploaded): string
+    {
+        $now = date("Y-m-d H:i:s");
+        $uploaded = strtotime($now) - strtotime($datePostWasUploaded);
+        if ($uploaded >= 172800) {
+            $diff = floor($uploaded / 172800) . ' days ago';
+        } elseif ($uploaded >= 86400) {
+            $diff = floor($uploaded / 86400) . ' day ago';
+        } elseif ($uploaded >= 3600) {
+            $diff = floor($uploaded / 3600) . ' hours ago';
+        } elseif ($uploaded >= 60) {
+            $diff = floor($uploaded / 60) . ' minutes ago';
+        } else {
+            $diff = 'a few seconds ago';
+        }
+        return $diff;
+    }
+}
+
+/////////////////////////// LIKE ///////////////////////////
 
 /**
  * Checking if user has liked post
@@ -226,8 +258,10 @@ function numberOfLikes(PDO $pdo, int $postId)
     return $likes;
 }
 
+/////////////////////////// FOLLOW ///////////////////////////
+
 /**
- * Checking if user is following another user
+ * Checking if logged in user is following another user
  * 
  * @param PDO $pdo
  * @param int $follower
@@ -251,26 +285,52 @@ function isFollowing(PDO $pdo, int $follower, int $isFollowingUserId)
     return $isFollowed;
 }
 
-if (!function_exists('postedAgo')) {
-    /**
-     * Returns how long it has been
-     *
-     * @param [type] $postDate
-     * @return string
-     */
-    function postedAgo(string $postDate): string
-    {
-        $todaysDate = date("Y-m-d H:i:s");
-        $ago = strtotime($todaysDate) - strtotime($postDate);
-        if ($ago >= 86400) {
-            $diff = floor($ago / 86400) . ' days ago';
-        } elseif ($ago >= 3600) {
-            $diff = floor($ago / 3600) . ' hours ago';
-        } elseif ($ago >= 60) {
-            $diff = floor($ago / 60) . ' minutes ago';
-        } else {
-            $diff = 'a few seconds ago';
-        }
-        return $diff;
-    }
+/**
+ * Count followers
+ * 
+ * @param PDO $pdo
+ * @param int $userId
+ * 
+ * @return void
+ */
+function followersCount(PDO $pdo, int $userId)
+{
+    $statement = $pdo->prepare('SELECT * FROM follows WHERE following_user_id = :userId');
+
+    sqlQueryError($pdo, $statement);
+
+    $statement->execute([
+        ':follower' => $userId
+    ]);
+
+    $followersCount = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    $followers = count($followersCount);
+
+    return $followers;
+}
+
+/**
+ * Count followings
+ * 
+ * @param PDO $pdo
+ * @param int $follower
+ * 
+ * @return void
+ */
+function followingsCount(PDO $pdo, int $follower)
+{
+    $statement = $pdo->prepare('SELECT * FROM follows WHERE user_id = :follower');
+
+    sqlQueryError($pdo, $statement);
+
+    $statement->execute([
+        ':follower' => $follower
+    ]);
+
+    $isFollowingCount = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    $followings = count($isFollowingCount);
+
+    return $followings;
 }

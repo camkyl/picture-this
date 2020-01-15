@@ -30,7 +30,7 @@ if (isset($_POST['email'], $_POST['password'])) {
 
     // Email not found in database
     if (!$user['email']) {
-        $_SESSION['errors'][] = 'Email not found.';
+        $_SESSION['errors'][] = 'The email entered is not found. Please register or try again.';
         redirect('/login.php');
         // Kill script if user is not found
         exit;
@@ -46,7 +46,7 @@ if (isset($_POST['email'], $_POST['password'])) {
         // die(var_dump($user['first_name']));
         // array(4) { ["id"]=> string(1) "4" ["first_name"]=> string(7) "Camilla" ["last_name"]=> string(18) "Kylmänen Sjörén" ["email"]=> string(11) "cks@live.se" }
     } else {
-        $_SESSION['errors'][] = 'You entered the wrong password';
+        $_SESSION['errors'][] = 'You entered the wrong password.';
         redirect('/login.php');
         exit;
     }
