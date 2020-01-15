@@ -16,11 +16,15 @@ require __DIR__ . '/views/header.php';
         <h1>Sign up</h1>
 
         <form action="/app/users/register.php" method="post" class="sign-up-form">
-            <div class="error-message">
-                <?php
-                displayErrorMessage();
-                ?>
-            </div>
+            <?php if (isset($_SESSION['errors'][0])) : ?>
+                <div class="message">
+                    <p>
+                        <?php
+                        displayErrorMessage();
+                        ?>
+                    </p>
+                </div>
+            <?php endif; ?>
 
             <div class="sign-up-form__group flex-col">
                 <label for="first-name">First name</label>
