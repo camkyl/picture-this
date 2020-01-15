@@ -38,11 +38,16 @@ $user = getUserById((int) $userId, $pdo);
         foreach ($posts as $post) :
             $postId = $post['id'];
             $postUser = (int) $post['user_id'];
+            //var_dump($post);
         ?>
             <div class="feed__post">
                 <div class="post__header bblg w-full">
                     <div class="post__header-profile">
-                        <img src="/app/users/avatar/<?php echo $post['avatar']; ?>" alt="avatar">
+                        <?php if ($_SESSION['user']['avatar'] === null) : ?>
+                            <img src="/app/users/avatar/placeholder2.png" alt="Profile picture">
+                        <?php else : ?>
+                            <img src="/app/users/avatar/<?php echo $_SESSION['user']['avatar']; ?>">
+                        <?php endif; ?>
                         <h4><?php echo $post['first_name'] . ' ' . $post['last_name']; ?></h4>
                     </div>
 

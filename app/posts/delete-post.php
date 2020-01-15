@@ -23,6 +23,8 @@ if ($postUserId === $loggedInUserId) {
         ':id' => $postId
     ]);
 
+    unlink(__DIR__ . '/uploads/' . $post['post_image']);
+
     // Preparing SQL query to delete post likes from database
     $statement = $pdo->prepare('DELETE FROM likes WHERE post_id = :id');
 
