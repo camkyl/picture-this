@@ -1,93 +1,103 @@
 .edit-profile {
-  height: 83vh;
-  width: 100vw;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  background-color: var(--white);
+    height: 83vh;
+    width: 100vw;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background-color: var(--white);
+}
+
+.edit-profile h3 {
+    font-family: "Poppins", sans-serif;
+    margin-top: 10px;
+}
+
+.edit-profile form:nth-child(2) {
+    margin-top: 20px;
 }
 
 /*remove default "choose image" input text*/
 .profile__image-edit {
-  position: relative;
-  overflow: hidden;
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .profile__image-edit input[type="file"] {
-  font-size: 40px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
+    font-size: 40px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
 }
 
 .profile__image-edit button {
-  padding: 4px;
-  width: 90px;
+    padding: 4px 10px;
+    margin-bottom: 14px;
 }
 
 .personal__text {
-  width: 100%;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 .personal__text label {
-  display: inline-block;
-  width: 22vw;
+    display: inline-block;
+    width: 22vw;
 }
 
 .personal__text input {
-  all: unset;
-  width: 68vw;
-  padding-bottom: 6px;
-  color: var(--grey);
+    all: unset;
+    width: 68vw;
+    padding-bottom: 6px;
+    color: var(--grey);
 }
 
 .personal__text textarea {
-  all: unset;
-  width: 68vw;
-  height: 15vh;
-  color: var(--grey);
+    all: unset;
+    width: 68vw;
+    height: 15vh;
+    color: var(--grey);
 }
 
+.profile__image-button button,
 .personal__text button {
-  background-image: var(--icon-color);
-  border-radius: 20px;
-  color: var(--white);
-  border: none;
-  font-size: 14px;
-  padding: 8px 20px;
-  font-weight: bolder;
-  margin-bottom: 10px;
+    background-image: var(--icon-color);
+    border-radius: 20px;
+    color: var(--white);
+    border: none;
+    font-size: 13px;
+    padding: 8px 20px;
+    font-weight: bolder;
 }
 
 .personal__biography {
-  display: flex;
-  border-bottom: 0.6px solid var(--black-transparent);
-  margin-bottom: 20px;
+    display: flex;
+    border-bottom: 0.6px solid var(--black-transparent);
+    margin-bottom: 20px;
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-  .edit-profile {
-    width: 55vw;
-  }
+    .edit-profile {
+        width: 55vw;
+    }
 
-  .flex {
-    width: 50%;
-  }
+    .flex {
+        width: 50%;
+    }
 
-  .personal__text label {
-    width: 30%;
-  }
+    .personal__text label {
+        width: 30%;
+    }
 
-  .personal__text input {
-    width: 70%;
-    color: var(--grey);
-  }
+    .personal__text input {
+        width: 70%;
+        color: var(--grey);
+    }
 
-  .personal__text textarea {
-    width: 70%;
-  }
+    .personal__text textarea {
+        width: 70%;
+    }
 }
