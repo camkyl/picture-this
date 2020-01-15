@@ -25,6 +25,10 @@ h6 {
     font-family: "Ubuntu", sans-serif;
 }
 
+h3 {
+    font-size: 18px;
+}
+
 h4 {
     font-size: 16px;
 }
@@ -71,6 +75,10 @@ button {
 
 .message p {
     padding: 12px;
+}
+
+.message p {
+    padding: 0px;
 }
 
 /******** repeatedly used properties ********/

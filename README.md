@@ -16,7 +16,7 @@ School assignment at Yrgo Webbutvecklare where we are creating an Instagram clon
 
 The application is responsive and is built using the method mobile-first.
 
-## Features
+## Required features
 
 - [x] As a user I should be able to create an account.
 - [x] As a user I should be able to login.
@@ -31,7 +31,8 @@ The application is responsive and is built using the method mobile-first.
 
 ## Extra features
 
-- [x] As a user I should be able to follow/unfollow users
+- [x] As a user I am be able to follow/unfollow users
+- [x] As a user I am be able to see other users posts
 
 ## Preview
  TBA
@@ -42,7 +43,8 @@ The application is responsive and is built using the method mobile-first.
     ```
     $ git clone https://github.com/camiwd/picture-this.git
      ```
-2. Open the index.html file in your browser
+2. Start your server
+3. Open the index.php file in your browser
 
 ## Tested by
 
