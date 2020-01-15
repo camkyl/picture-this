@@ -37,9 +37,9 @@ The application is responsive and is built using the method mobile-first.
 
 ## Preview
  
- <img src="/previews/preview-login.png" width: 32%>
- <img src="/previews/preview-profile.png" width: 32%>
- <img src="/previews/preview-feed.png" width: 32%>
+ <img src="previews/preview-login.png" width: 32%>
+ <img src="previews/preview-profile.png" width: 32%>
+ <img src="previews/preview-feed.png" width: 32%>
 
 ## Installation
  1. Clone down the project to your computer
