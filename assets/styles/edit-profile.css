@@ -11,7 +11,8 @@
     margin-top: 10px;
 }
 
-.edit-profile form:nth-child(2) {
+.edit-profile form:nth-child(2),
+.edit-profile form:nth-child(3) {
     margin-top: 20px;
 }
 
@@ -76,6 +77,23 @@
     display: flex;
     border-bottom: 0.6px solid var(--black-transparent);
     margin-bottom: 20px;
+}
+
+.delete-account {
+    padding: 0px 16px;
+}
+
+.delete-account p {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.delete-account button {
+    border: 1px solid red;
+    box-shadow: 0 0 4px 1px red;
+    color: red;
+    background-color: rgba(255, 0, 0, 0);
+    margin: 15px 0px 20px 0px;
 }
 
 /* Large devices (laptops/desktops, 992px and up) */

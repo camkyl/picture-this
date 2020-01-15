@@ -97,7 +97,8 @@
         padding: 30px;
     }
 
-    .sign-up-form {
+    .sign-up-form,
+    .log-in-form {
         width: 100%;
     }
 
