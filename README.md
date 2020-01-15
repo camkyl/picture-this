@@ -47,6 +47,21 @@ The application is responsive and is built using the method mobile-first.
 ## Tested by
 TBA
 
+## Code review
+
+Michaela Lundborg
+
+* functions.php:258 - you didn’t declare the type of the parameter $postDate.
+* functions.php:261 - in this function you declare the return type using both “: string” and “@return string”, in the rest of your functions you’re only using @return - be consistent.
+* register.php - a lot of comments which makes it a bit hard to read the code, remove the comments you don’t need (the diedumps for example).
+* login.php, edit-avatar.php - same as above, a lot of diedumps
+* edit-avatar.php:26 - in the array containing allowed filetypes you have jpeg and png, but the text underneath says only jpg and png are allowed. Maybe you should allow all three. (also check your other files containing this code)
+* edit-avatar.php:33 - perhaps you could add how big the filesize limit is in the text, makes it easier for the user to pick an allowed image. (also check your other files containing this code)
+* You have two different folders called uploads, one is empty - do you need both?
+* If I register a new user and doesn’t want to upload an avatar image, the placeholder works fine on the profilepage. But when I add a post the placeholder doesn’t show up as avatar in the feed.
+* Perhaps you could put your navigation in a nav element.
+* The app looks really nice, great work! :) 
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
