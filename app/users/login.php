@@ -26,8 +26,6 @@ if (isset($_POST['email'], $_POST['password'])) {
     // Array with user login details
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-    // die(var_dump($user));
-
     // Email not found in database
     if (!$user['email']) {
         $_SESSION['errors'][] = 'The email entered is not found. Please register or try again.';

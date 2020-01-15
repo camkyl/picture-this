@@ -16,8 +16,8 @@ if (isset($_FILES['post-image'], $_POST['post-caption'])) {
     $id = $_SESSION['user']['id'];
 
     // Only .png and .jpg files are allowed.
-    if (!in_array($image['type'], ['image/jpeg', 'image/png'])) {
-        $_SESSION['errors'][] = 'The uploaded file type is not allowed. Only .jpg and .png allowed.';
+    if (!in_array($image['type'], ['image/jpg', 'image/jpeg', 'image/png'])) {
+        $_SESSION['errors'][] = 'The uploaded file type is not allowed. Only .jpg, .jpeg, and .png allowed.';
     }
 
     // File size equal to or lower than two megabytes allowed.

@@ -11,7 +11,6 @@ require __DIR__ . '/../autoload.php';
 $_SESSION['errors'] = [];
 
 if (isset($_POST['first-name'], $_POST['last-name'], $_POST['email'], $_POST['password'])) {
-    // die(var_dump($_POST));
     $firstName = filter_var($_POST['first-name'], FILTER_SANITIZE_STRING);
     $lastName = filter_var($_POST['last-name'], FILTER_SANITIZE_STRING);
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
@@ -33,9 +32,6 @@ if (isset($_POST['first-name'], $_POST['last-name'], $_POST['email'], $_POST['pa
     // Array with user information from input field
     $isEmailExisting = $statement->fetch(PDO::FETCH_ASSOC);
 
-    // var_dump($email);
-    // die(var_dump($isEmailExisting['email']));
-
     // Email already exists in database 
     if ($isEmailExisting['email'] === $email) {
         // Error message printed in register.php (front-end) and user redirected back to register page
@@ -49,7 +45,6 @@ if (isset($_POST['first-name'], $_POST['last-name'], $_POST['email'], $_POST['pa
     $registration = $pdo->prepare('INSERT INTO users (first_name, last_name, email, password) VALUES (:first_name, :last_name, :email, :password)');
 
     if (!$registration) {
-        // PHP doesn't print SQL errors in the browser
         die(var_dump($pdo->errorInfo()));
     }
 
