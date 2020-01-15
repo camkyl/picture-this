@@ -12,6 +12,24 @@ isLoggenIn();
 ?>
 
 <section class="create-post flex-col-cen">
+    <?php if (isset($_SESSION['errors'][0])) : ?>
+        <div class="message">
+            <p class="edit-p">
+                <?php
+                displayErrorMessage();
+                ?>
+            </p>
+        </div>
+    <?php elseif (isset($_SESSION['messages'][0])) : ?>
+        <div class="message">
+            <p class="edit-p">
+                <?php
+                displayConfirmationMessage();
+                ?>
+            </p>
+        </div>
+    <?php endif; ?>
+
     <h2 class="mt15">New post</h2>
     <form action="/app/posts/create-post.php" method="post" enctype="multipart/form-data" class="create-post__form flex-col-cen">
         <div class="create-post__image-frame bblg btlg mt15">

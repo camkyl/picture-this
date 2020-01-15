@@ -31,8 +31,9 @@ The application is responsive and is built using the method mobile-first.
 
 ## Extra features
 
-- [x] As a user I am be able to follow/unfollow users
-- [x] As a user I am be able to see other users posts
+- [x] As a user I am be able to follow/unfollow users.
+- [x] As a user I am be able to see other users posts.
+- [x] As a user I am able to delete my account and all information related to it.
 
 ## Preview
  TBA

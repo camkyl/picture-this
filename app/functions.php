@@ -61,6 +61,8 @@ function sqlQueryError($pdo, $statement)
     }
 }
 
+/////////////////////////// USER ///////////////////////////
+
 /**
  * Returns user data
  * 

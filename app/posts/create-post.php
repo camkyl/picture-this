@@ -24,6 +24,8 @@ if (isset($_FILES['post-image'], $_POST['post-caption'])) {
     // 2 Megabyte = 2097152 Bytes
     if ($image['size'] > 2097152) {
         $_SESSION['errors'][] = 'The uploaded file exceeded the filesize limit.';
+        redirect('/create-post.php');
+        exit;
     }
 
     move_uploaded_file($image['tmp_name'], $destination);

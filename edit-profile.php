@@ -40,7 +40,7 @@ isLoggenIn();
             </div>
 
             <div class="profile__image-edit">
-                <label for="avatar">Edit profile picture</label>
+
                 <input type="file" name="avatar" id="avatar">
                 <button type="submit" class="mt15">Choose..</button>
             </div>
@@ -71,6 +71,14 @@ isLoggenIn();
                 <div class="flex-col-cen">
                     <button type="submit">Save bio</button>
                 </div>
+            </div>
+        </form>
+
+        <form action="/app/users/delete-account.php" method="post" class="delete-account flex-col-cen">
+            <h3>Delete account:</h3>
+            <p>Deleting your account deletes all your posts, likes, followers, and account information. Once deleted, this information cannot be recovered. Click on the "Delete"-button to delete.</p>
+            <div class="flex-col-cen">
+                <button type="submit" name="delete-account">Delete</button>
             </div>
         </form>
     </div>
