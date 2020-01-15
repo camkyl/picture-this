@@ -15,7 +15,7 @@ declare(strict_types=1);
 
     <div class="add__background">
         <a href="/create-post.php" title="Add new post">
-            <img src="/views/icons/add-white2.svg" alt="Add post" class="add">
+            <img src="/views/icons/add-white2.svg" alt="Add post" class="add"> 
         </a>
     </div>
 

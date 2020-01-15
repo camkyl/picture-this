@@ -1,0 +1,13 @@
+.view-post {
+    width: 100vw;
+    min-height: 83vh;
+    overflow-x: hidden;
+    background-color: var(--white);
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .view-post {
+        width: 55vw;
+    }
+}

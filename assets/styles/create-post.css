@@ -1,118 +1,119 @@
 .create-post,
 .edit-post {
-  min-height: 92vh;
-  width: 100%;
-  background-color: var(--white);
-  overflow: scroll;
+    min-height: 92vh;
+    width: 100%;
+    background-color: var(--white);
+    overflow: scroll;
 }
 
 .edit-post__heading {
-  height: 6%;
+    height: 6%;
 }
 
 .edit-post-content {
-  margin-bottom: 15%;
+    margin-bottom: 15%;
 }
 
 .create-post h2,
 .create-post__caption label,
 .edit-post h2,
 .edit-post__caption label {
-  text-transform: capitalize;
-  font-family: "Poppins", sans-serif;
-  font-weight: bolder;
+    text-transform: capitalize;
+    font-family: "Poppins", sans-serif;
+    font-weight: bolder;
 }
 
 .create-post__form {
-  width: 100%;
-  margin-bottom: 20px;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 .create-post__image-frame,
 .edit-post__image-frame {
-  width: 100%;
-  min-height: 210px;
-  background-image: url(/app/posts/uploads/img_placeholder.png);
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover;
+    width: 100%;
+    min-height: 210px;
+    background-image: url(/app/posts/uploads/img_placeholder.png);
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
 }
 
 .create-post__image-frame img,
 .edit-post__image-frame img {
-  display: block;
-  margin: 0;
-  width: 100%;
+    display: block;
+    margin: 0;
+    width: 100%;
 }
 
 /*remove default "choose image" input text*/
 .create-post__image {
-  position: relative;
-  overflow: hidden;
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid black;
-  border-radius: 9px;
-  padding: 4px 8px;
-  font-size: 13px;
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 9px;
+    padding: 4px 8px;
+    font-size: 13px;
 }
 
 /*remove default "choose image" input text*/
 .create-post__image input[type="file"] {
-  font-size: 40px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
+    font-size: 40px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
 }
 
 .create-post__caption,
 .edit-post__caption {
-  width: 100%;
+    width: 100%;
 }
 
 .create-post__caption textarea,
 .edit-post__caption textarea {
-  all: unset;
-  width: 90%;
-  height: 14vh;
-  color: var(--grey);
-  border-top: 0.5px solid var(--black-transparent);
-  border-bottom: 0.5px solid var(--black-transparent);
+    all: unset;
+    width: 90%;
+    height: 14vh;
+    color: var(--grey);
+    border-top: 0.5px solid var(--black-transparent);
+    border-bottom: 0.5px solid var(--black-transparent);
 }
 
-.create-post button {
-  background-image: var(--icon-color);
-  border-radius: 20px;
-  color: white;
-  border: none;
-  font-size: 14px;
-  padding: 8px 20px;
-  font-weight: bolder;
+.create-post button,
+.edit-post-content button {
+    background-image: var(--icon-color);
+    border-radius: 20px;
+    color: white;
+    border: none;
+    font-size: 13px;
+    padding: 8px 20px;
+    font-weight: bolder;
 }
 
 .delete-post-button {
-  border: 1px solid red;
-  box-shadow: 0 0 4px 1px red;
-  color: red;
-  background-color: rgba(255, 0, 0, 0);
-  margin-bottom: 20px;
+    border: 1px solid red;
+    box-shadow: 0 0 4px 1px red;
+    color: red;
+    background-color: rgba(255, 0, 0, 0);
+    margin-bottom: 20px;
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-  .create-post,
-  .edit-post {
-    width: 55vw;
-    overflow-y: scroll;
-  }
+    .create-post,
+    .edit-post {
+        width: 55vw;
+        overflow-y: scroll;
+    }
 
-  .edit-post-content {
-    margin-bottom: 10%;
-  }
+    .edit-post-content {
+        margin-bottom: 10%;
+    }
 
-  .create-post__caption textarea {
-    width: 70%;
-  }
+    .create-post__caption textarea {
+        width: 70%;
+    }
 }

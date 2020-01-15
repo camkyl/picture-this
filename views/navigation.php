@@ -5,7 +5,7 @@
 <header>
 
     <div class="navigation__back">
-        <img src="/views/icons/back.svg" title="Previous page" alt="Back" onclick="history.back(-1)">
+        <img src="/views/icons/back.svg" title="Previous page" alt="Back" class="go-backwards">
     </div>
 
     <div class="navigation__home">
@@ -21,3 +21,4 @@
     </div>
 
 </header>
+<script src="/assets/scripts/go-backwards.js"></script>
