@@ -45,7 +45,9 @@ The application is responsive and is built using the method mobile-first.
 2. Open the index.html file in your browser
 
 ## Tested by
-TBA
+
+* [Dominic Kersch](https://github.com/AltDom)
+* [Emelie Petersson](https://github.com/emeliepetersson)
 
 ## License
 
