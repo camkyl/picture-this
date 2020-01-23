@@ -89,7 +89,7 @@ $user = getUserById((int) $userId, $pdo);
                                 </button>
                             </form>
 
-                            <img src="/views/icons/comment.svg" alt="Comment">
+                            <img src="/views/icons/comment.svg" alt="Comment" class="comment-buttons">
                         </div>
 
                         <div class="date">
@@ -123,12 +123,14 @@ $user = getUserById((int) $userId, $pdo);
                     </div>
 
                     <div class="post__comments w-full">
-                        <p>Post comments..</p>
+                        
                     </div>
                 </div>
             </div>
         <?php endforeach; ?>
     </section>
 </main>
+
+<script src="/assets/scripts/comments.js"></script>
 
 <?php require __DIR__ . '/views/footer.php'; ?>

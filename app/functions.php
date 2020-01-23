@@ -162,6 +162,29 @@ function getPostById(PDO $pdo, int $postId)
 }
 
 /**
+ * Returns post and user by post id
+ * 
+ * @param int $postId
+ * @param PDO $pdo
+ * 
+ * @return array
+ */
+function getPostAndUserById(PDO $pdo, int $postId)
+{
+    $statement = $pdo->prepare('SELECT * FROM posts JOIN users ON posts.user_id = users.id WHERE posts.id = :id');
+
+    sqlQueryError($pdo, $statement);
+
+    $statement->execute([
+        'id' => $postId
+    ]);
+
+    $post = $statement->fetch(PDO::FETCH_ASSOC);
+
+    return $post;
+}
+
+/**
  * Returns post by user
  * 
  * @param PDO $pdo
