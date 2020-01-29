@@ -1,0 +1,46 @@
+.comment-container form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.submit-comment-form {
+    margin: 20px;
+}
+
+.comments-posted {
+    margin-top: 10px;
+}
+
+.submit-comment-form input:nth-child(3) {
+    border-radius: 15px;
+    width: 70%;
+    height: 50px;
+    background-color: #999998;
+    border: none;
+}
+
+.submit-comment-form button {
+    border: none;
+    width: 80px;
+    height: 50px;
+    border-radius: 19%;
+    background-color: #999998;
+}
+
+.comment-containers {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0px 5px 0px;
+}
+
+.username {
+    margin-right: 6px;
+}
+
+.edit-input {
+    border: 1px black solid;
+}
+
+.username-comment {
+    display: flex;
+}

@@ -359,3 +359,27 @@ function followingsCount(PDO $pdo, int $follower)
 
     return $followings;
 }
+
+
+/**
+ * Returns comments by post id
+ * 
+ * @param int $postId
+ * @param PDO $pdo
+ * 
+ * @return array
+ */
+function getCommentsById(PDO $pdo, int $postId)
+{
+    $statement = $pdo->prepare('SELECT * FROM comments WHERE comments.post_id = :id ORDER BY date_posted DESC');
+
+    sqlQueryError($pdo, $statement);
+
+    $statement->execute([
+        'id' => $postId
+    ]);
+
+    $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    return $comments;
+}
