@@ -9,7 +9,7 @@ declare(strict_types=1);
         <img src="/views/icons/home2.svg" alt="Home">
     </a>
 
-    <a href="#" title="Search" class="icon">
+    <a href="/search.php" title="Search" class="icon">
         <img src="/views/icons/search3.svg" alt="Search">
     </a>
 

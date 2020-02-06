@@ -9,7 +9,10 @@ isLoggenIn();
 // Logged in user:
 $userId = (int) $_SESSION['user']['id'];
 
+
+
 $user = getUserById((int) $userId, $pdo);
+
 
 ?>
 
@@ -71,6 +74,7 @@ $user = getUserById((int) $userId, $pdo);
                 <div class="post__image">
                     <img src="/app/posts/uploads/<?php echo $post['post_image'] ?>" alt="Post image">
                 </div>
+               
 
                 <?php
                 $likedPost = userHasLiked($pdo, (int) $userId, (int) $postId);
@@ -89,7 +93,7 @@ $user = getUserById((int) $userId, $pdo);
                                 </button>
                             </form>
 
-                            <img src="/views/icons/comment.svg" alt="Comment">
+                            <img src="/views/icons/comment.svg" alt="Comment" class="comment-buttons">
                         </div>
 
                         <div class="date">
@@ -123,8 +127,64 @@ $user = getUserById((int) $userId, $pdo);
                     </div>
 
                     <div class="post__comments w-full">
-                        <p>Post comments..</p>
+                        
                     </div>
+
+
+                    <div>
+                    <form action="/app/posts/insert-comment.php" method="post" class="submit-comment-form">
+                            <input type="hidden" name="first-name" value="<?php echo $user['first_name']; ?>">
+                            <input type="hidden" name="post-id" value="<?php echo $post['id']; ?>">
+                            <input type="text" name="comment">
+                            <button type="submit"> Comment</button>
+                    </form>
+                    </div>
+                    
+                    
+                    <!-- Comment-conatiner -->
+                    
+                    <div class="comment-container">
+                        
+                        <div class="comments-posted">
+                            <?php $comments = getCommentsById($pdo, (int) $postId);?>
+                            <?php if ($comments): ?>
+                                <?php foreach ($comments as $comment): ?>
+
+                                    <div class="comment-containers">
+                                        <div class="username-comment">
+                                            <h5 class="username"><?php echo $comment['username']; ?> </h5>
+                                            <p class="content"><?php echo $comment['content']; ?></p>
+                                        </div>
+
+                                    <div class="username-comment">   
+                                        <?php if ($user['first_name'] == $comment['username']): ?>
+
+                                            <form action="/app/posts/edit-comment.php" method="post">
+                                                <input type="hidden" name="post-id-edit" value="<?php echo $comment['comment_id']; ?>">
+                                                <input class ="edit-input" type="text" name="edit-comment">
+                                                <button type="submit">Edit</button>
+                                            </form>
+
+                                            <form action="/app/posts/delete-comment.php" method="post">
+                                                <input type="hidden" name="post-id-delete" value="<?php echo $comment['comment_id']; ?>">
+                                                <button type="submit">Delete</button>
+                                            </form>
+
+                                        <?php endif; ?>
+                                        
+                                    </div>
+                                </div>
+
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+
+                        </div>
+
+
+                     </div>
+
+                    
+                    <p id="output"></p>
                 </div>
             </div>
         <?php endforeach; ?>
