@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-require __DIR__ . '/../autoload.php';
+require __DIR__.'/../autoload.php';
 
 // In this file we delete posts in the database.
 
@@ -20,10 +20,10 @@ if ($postUserId === $loggedInUserId) {
     sqlQueryError($pdo, $statement);
 
     $statement->execute([
-        ':id' => $postId
+        ':id' => $postId,
     ]);
 
-    unlink(__DIR__ . '/uploads/' . $post['post_image']);
+    unlink(__DIR__.'/uploads/'.$post['post_image']);
 
     // Preparing SQL query to delete post likes from database
     $statement = $pdo->prepare('DELETE FROM likes WHERE post_id = :id');
@@ -31,7 +31,7 @@ if ($postUserId === $loggedInUserId) {
     sqlQueryError($pdo, $statement);
 
     $statement->execute([
-        ':id' => $postId
+        ':id' => $postId,
     ]);
 
     $_SESSION['messages'][0] = 'Your post was successfully deleted.';

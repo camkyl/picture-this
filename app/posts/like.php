@@ -1,9 +1,10 @@
 <?php
+
 // Back-end
 
 declare(strict_types=1);
 
-require __DIR__ . '/../autoload.php';
+require __DIR__.'/../autoload.php';
 
 // In this file we add or remove likes on posts in the database
 
@@ -19,8 +20,8 @@ if (isset($_POST['like-post'])) {
         }
 
         $removeLike->execute([
-            ':post_id' => $postId,
-            ':liked_by_user_id' => $userId
+            ':post_id'          => $postId,
+            ':liked_by_user_id' => $userId,
         ]);
     } else {
         $like = $pdo->prepare('INSERT INTO likes (post_id, liked_by_user_id) VALUES (:post_id, :liked_by_user_id)');
@@ -30,8 +31,8 @@ if (isset($_POST['like-post'])) {
         }
 
         $like->execute([
-            ':post_id' => $postId,
-            ':liked_by_user_id' => $userId
+            ':post_id'          => $postId,
+            ':liked_by_user_id' => $userId,
         ]);
     }
 

@@ -1,7 +1,7 @@
 <?php
 
-require __DIR__ . '/views/header.php';
-require __DIR__ . '/views/navigation.php';
+require __DIR__.'/views/header.php';
+require __DIR__.'/views/navigation.php';
 
 if (isset($_POST['id'])) {
     $postId = $_POST['id'];
@@ -10,7 +10,7 @@ if (isset($_POST['id'])) {
 ?>
 
 <section class="view-post">
-    <?php if (isset($_SESSION['errors'][0])) : ?>
+    <?php if (isset($_SESSION['errors'][0])) { ?>
         <div class="message">
             <p>
                 <?php
@@ -18,7 +18,7 @@ if (isset($_POST['id'])) {
                 ?>
             </p>
         </div>
-    <?php elseif (isset($_SESSION['messages'][0])) : ?>
+    <?php } elseif (isset($_SESSION['messages'][0])) { ?>
         <div class="message">
             <p>
                 <?php
@@ -26,13 +26,13 @@ if (isset($_POST['id'])) {
                 ?>
             </p>
         </div>
-    <?php endif; ?>
+    <?php } ?>
 
     <div class="feed__post">
         <div class="post__header bblg w-full">
             <div class="post__header-profile">
                 <img src="/app/users/avatar/<?php echo $viewingPost['avatar']; ?>" alt="avatar">
-                <h4><?php echo $viewingPost['first_name'] . ' ' . $viewingPost['last_name']; ?></h4>
+                <h4><?php echo $viewingPost['first_name'].' '.$viewingPost['last_name']; ?></h4>
             </div>
 
             <div class="post__header-edit">
@@ -42,7 +42,7 @@ if (isset($_POST['id'])) {
         </div>
 
         <div class="post__image">
-            <img src="/app/posts/uploads/<?php echo $viewingPost['post_image'];  ?>" alt="Post image">
+            <img src="/app/posts/uploads/<?php echo $viewingPost['post_image']; ?>" alt="Post image">
         </div>
 
         <?php
@@ -54,11 +54,11 @@ if (isset($_POST['id'])) {
                 <div class="flex">
                     <form action="/app/posts/like.php" method="post">
                         <button class="like-button" name="like-post" value="<?php echo $viewingPost['id']; ?>">
-                            <?php if ($userThatHasLiked == $viewingPost['user_id']) : ?>
+                            <?php if ($userThatHasLiked == $viewingPost['user_id']) { ?>
                                 <img src="/views/icons/liked.svg" alt="Post is liked">
-                            <?php else : ?>
+                            <?php } else { ?>
                                 <img src="/views/icons/heart.svg" alt="Post is not liked">
-                            <?php endif; ?>
+                            <?php } ?>
                         </button>
                     </form>
 
@@ -79,19 +79,19 @@ if (isset($_POST['id'])) {
                 <?php
                 $likes = numberOfLikes($pdo, (int) $postId);
                 ?>
-                <?php foreach ($likes as $like) : ?>
-                    <?php if ($like == 0) : ?>
+                <?php foreach ($likes as $like) { ?>
+                    <?php if ($like == 0) { ?>
                         <h5>Be the first one to like this post</h5>
-                    <?php elseif ($like == 1) : ?>
+                    <?php } elseif ($like == 1) { ?>
                         <h5><?php echo $like; ?> person likes this</h5>
-                    <?php else : ?>
+                    <?php } else { ?>
                         <h5><?php echo $like; ?> people likes this</h5>
-                    <?php endif; ?>
-                <?php endforeach; ?>
+                    <?php } ?>
+                <?php } ?>
             </div>
 
             <div class="post__caption w-full">
-                <h5><?php echo $viewingPost['first_name'] . ' ' . $viewingPost['last_name']; ?></h5>
+                <h5><?php echo $viewingPost['first_name'].' '.$viewingPost['last_name']; ?></h5>
                 <p><?php echo $viewingPost['post_caption']; ?></p>
             </div>
 
@@ -110,7 +110,7 @@ if (isset($_POST['id'])) {
 
 
 <?php
- 
-require __DIR__ . '/views/footer.php';
+
+require __DIR__.'/views/footer.php';
 
 ?>

@@ -1,5 +1,5 @@
 <?php
-// Is required in header.php 
+// Is required in header.php
 ?>
 
 <header>

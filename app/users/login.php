@@ -1,9 +1,10 @@
 <?php
+
 // Back-end
 
 declare(strict_types=1);
 
-require __DIR__ . '/../autoload.php';
+require __DIR__.'/../autoload.php';
 
 // In this file we login users.
 
@@ -20,7 +21,7 @@ if (isset($_POST['email'], $_POST['password'])) {
 
     // Binding parameters with variables and running the script
     $statement->execute([
-        ':email' => $email
+        ':email' => $email,
     ]);
 
     // Array with user login details
@@ -41,7 +42,7 @@ if (isset($_POST['email'], $_POST['password'])) {
         unset($user['password']);
         $_SESSION['user'] = $user;
 
-        // die(var_dump($user['first_name']));
+    // die(var_dump($user['first_name']));
         // array(4) { ["id"]=> string(1) "4" ["first_name"]=> string(7) "Camilla" ["last_name"]=> string(18) "Kylmänen Sjörén" ["email"]=> string(11) "cks@live.se" }
     } else {
         $_SESSION['errors'][] = 'You entered the wrong password.';

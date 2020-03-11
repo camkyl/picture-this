@@ -1,9 +1,10 @@
 <?php
+
 // Back-end
 
 declare(strict_types=1);
 
-require __DIR__ . '/../autoload.php';
+require __DIR__.'/../autoload.php';
 
 // In this file we edit users posts in the database
 
@@ -19,7 +20,7 @@ if (isset($_POST['edit-post-caption'])) {
 
     $statement->execute([
         ':editedCaption' => $editedCaption,
-        ':postId' => $postId
+        ':postId'        => $postId,
     ]);
 
     redirect('/profile.php');
