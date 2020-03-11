@@ -12,3 +12,4 @@ document.querySelector(".jsfiles").onchange = function() {
   // Read the image file as a data URL.
   reader.readAsDataURL(this.files[0]);
 };
+ 
