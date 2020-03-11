@@ -1,11 +1,12 @@
 <?php
+
 // Is required in autoload.php
 
 declare(strict_types=1);
 
 if (!function_exists('redirect')) {
     /**
-     * Redirect the user to given path
+     * Redirect the user to given path.
      *
      * @param string $path
      *
@@ -19,8 +20,8 @@ if (!function_exists('redirect')) {
 }
 
 /**
- * Redirects the user to the login page if she/he is not authorized to enter the page without being logged in
- * 
+ * Redirects the user to the login page if she/he is not authorized to enter the page without being logged in.
+ *
  * @return bool
  */
 function isLoggenIn()
@@ -33,8 +34,8 @@ function isLoggenIn()
 /**
  * Generates a random number
  * Used for profile avatars
- * https://www.php.net/manual/en/function.com-create-guid.php
- * 
+ * https://www.php.net/manual/en/function.com-create-guid.php.
+ *
  * @return void
  */
 function GUID()
@@ -47,12 +48,12 @@ function GUID()
 }
 
 /**
- * Function printing SQL error
- * 
- * @param PDO $pdo
+ * Function printing SQL error.
+ *
+ * @param PDO    $pdo
  * @param object $statement
- * 
- * @return array 
+ *
+ * @return array
  */
 function sqlQueryError($pdo, $statement)
 {
@@ -64,12 +65,12 @@ function sqlQueryError($pdo, $statement)
 /////////////////////////// USER ///////////////////////////
 
 /**
- * Returns user data
- * 
+ * Returns user data.
+ *
  * @param int $userId
  * @param PDO $pdo
- * 
- * @return array 
+ *
+ * @return array
  */
 function getUserById(int $userId, PDO $pdo)
 {
@@ -78,7 +79,7 @@ function getUserById(int $userId, PDO $pdo)
     sqlQueryError($pdo, $statement);
 
     $statement->execute([
-        ':id' => $userId
+        ':id' => $userId,
     ]);
 
     $user = $statement->fetch(PDO::FETCH_ASSOC);
@@ -89,28 +90,26 @@ function getUserById(int $userId, PDO $pdo)
 /////////////////////////// MESSAGE ///////////////////////////
 
 /**
- * Displays error messages if they occur 
- * 
+ * Displays error messages if they occur.
+ *
  * @return void
  */
 function displayErrorMessage()
 {
     if (isset($_SESSION['errors'][0])) {
-
         echo $_SESSION['errors'][0];
         unset($_SESSION['errors']);
     }
 }
 
 /**
- * Messages confirming success
- * 
+ * Messages confirming success.
+ *
  * @return void
  */
 function displayConfirmationMessage()
 {
     if (isset($_SESSION['messages'][0])) {
-
         echo $_SESSION['messages'][0];
         unset($_SESSION['messages']);
     }
@@ -119,10 +118,10 @@ function displayConfirmationMessage()
 /////////////////////////// POST ///////////////////////////
 
 /**
- * Returns all posts
- * 
+ * Returns all posts.
+ *
  * @param PDO $pdo
- * 
+ *
  * @return array
  */
 function getAllPosts($pdo)
@@ -139,11 +138,11 @@ function getAllPosts($pdo)
 }
 
 /**
- * Returns post by id
- * 
+ * Returns post by id.
+ *
  * @param int $postId
  * @param PDO $pdo
- * 
+ *
  * @return array
  */
 function getPostById(PDO $pdo, int $postId)
@@ -153,7 +152,7 @@ function getPostById(PDO $pdo, int $postId)
     sqlQueryError($pdo, $statement);
 
     $statement->execute([
-        'id' => $postId
+        'id' => $postId,
     ]);
 
     $post = $statement->fetch(PDO::FETCH_ASSOC);
@@ -162,11 +161,34 @@ function getPostById(PDO $pdo, int $postId)
 }
 
 /**
- * Returns post by user
- * 
+ * Returns post and user by post id.
+ *
+ * @param int $postId
+ * @param PDO $pdo
+ *
+ * @return array
+ */
+function getPostAndUserById(PDO $pdo, int $postId)
+{
+    $statement = $pdo->prepare('SELECT * FROM posts JOIN users ON posts.user_id = users.id WHERE posts.id = :id');
+
+    sqlQueryError($pdo, $statement);
+
+    $statement->execute([
+        'id' => $postId,
+    ]);
+
+    $post = $statement->fetch(PDO::FETCH_ASSOC);
+
+    return $post;
+}
+
+/**
+ * Returns post by user.
+ *
  * @param PDO $pdo
  * @param int $userId
- * 
+ *
  * @return array
  */
 function getPostsByUser(PDO $pdo, int $userId)
@@ -176,7 +198,7 @@ function getPostsByUser(PDO $pdo, int $userId)
     sqlQueryError($pdo, $statement);
 
     $statement->execute([
-        'id' => $userId
+        'id' => $userId,
     ]);
 
     $postByUser = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -186,26 +208,28 @@ function getPostsByUser(PDO $pdo, int $userId)
 
 if (!function_exists('postedAgo')) {
     /**
-     * Calculates time since post was uploaded
+     * Calculates time since post was uploaded.
      *
      * @param [type] $datePostWasUploaded
+     *
      * @return string
      */
     function postedAgo(string $datePostWasUploaded): string
     {
-        $now = date("Y-m-d H:i:s");
+        $now = date('Y-m-d H:i:s');
         $uploaded = strtotime($now) - strtotime($datePostWasUploaded);
         if ($uploaded >= 172800) {
-            $diff = floor($uploaded / 172800) . ' days ago';
+            $diff = floor($uploaded / 172800).' days ago';
         } elseif ($uploaded >= 86400) {
-            $diff = floor($uploaded / 86400) . ' day ago';
+            $diff = floor($uploaded / 86400).' day ago';
         } elseif ($uploaded >= 3600) {
-            $diff = floor($uploaded / 3600) . ' hours ago';
+            $diff = floor($uploaded / 3600).' hours ago';
         } elseif ($uploaded >= 60) {
-            $diff = floor($uploaded / 60) . ' minutes ago';
+            $diff = floor($uploaded / 60).' minutes ago';
         } else {
             $diff = 'a few seconds ago';
         }
+
         return $diff;
     }
 }
@@ -213,13 +237,13 @@ if (!function_exists('postedAgo')) {
 /////////////////////////// LIKE ///////////////////////////
 
 /**
- * Checking if user has liked post
- * 
+ * Checking if user has liked post.
+ *
  * @param PDO $pdo
  * @param int $userId
  * @param int $postId
- * 
- * @return array 
+ *
+ * @return array
  */
 function userHasLiked(PDO $pdo, int $userId, int $postId)
 {
@@ -238,11 +262,11 @@ function userHasLiked(PDO $pdo, int $userId, int $postId)
 }
 
 /**
- * Get number of likes on a post
- * 
+ * Get number of likes on a post.
+ *
  * @param PDO $pdo
  * @param int $postId
- * 
+ *
  * @return int
  */
 function numberOfLikes(PDO $pdo, int $postId)
@@ -252,7 +276,7 @@ function numberOfLikes(PDO $pdo, int $postId)
     sqlQueryError($pdo, $statement);
 
     $statement->execute([
-        ':post_id' => $postId
+        ':post_id' => $postId,
     ]);
 
     $likes = $statement->fetch(PDO::FETCH_ASSOC);
@@ -263,13 +287,13 @@ function numberOfLikes(PDO $pdo, int $postId)
 /////////////////////////// FOLLOW ///////////////////////////
 
 /**
- * Checking if logged in user is following another user
- * 
+ * Checking if logged in user is following another user.
+ *
  * @param PDO $pdo
  * @param int $follower
  * @param int $isFollowingUserId
- * 
- * @return array 
+ *
+ * @return array
  */
 function isFollowing(PDO $pdo, int $follower, int $isFollowingUserId)
 {
@@ -278,8 +302,8 @@ function isFollowing(PDO $pdo, int $follower, int $isFollowingUserId)
     sqlQueryError($pdo, $statement);
 
     $statement->execute([
-        ':user_id' => $follower,
-        ':is_following_id' => $isFollowingUserId
+        ':user_id'         => $follower,
+        ':is_following_id' => $isFollowingUserId,
     ]);
 
     $isFollowed = $statement->fetch(PDO::FETCH_ASSOC);
@@ -288,11 +312,11 @@ function isFollowing(PDO $pdo, int $follower, int $isFollowingUserId)
 }
 
 /**
- * Count followers
- * 
+ * Count followers.
+ *
  * @param PDO $pdo
  * @param int $userId
- * 
+ *
  * @return void
  */
 function followersCount(PDO $pdo, int $userId)
@@ -302,7 +326,7 @@ function followersCount(PDO $pdo, int $userId)
     sqlQueryError($pdo, $statement);
 
     $statement->execute([
-        ':follower' => $userId
+        ':follower' => $userId,
     ]);
 
     $followersCount = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -313,11 +337,11 @@ function followersCount(PDO $pdo, int $userId)
 }
 
 /**
- * Count followings
- * 
+ * Count followings.
+ *
  * @param PDO $pdo
  * @param int $follower
- * 
+ *
  * @return void
  */
 function followingsCount(PDO $pdo, int $follower)
@@ -327,7 +351,7 @@ function followingsCount(PDO $pdo, int $follower)
     sqlQueryError($pdo, $statement);
 
     $statement->execute([
-        ':follower' => $follower
+        ':follower' => $follower,
     ]);
 
     $isFollowingCount = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -335,4 +359,27 @@ function followingsCount(PDO $pdo, int $follower)
     $followings = count($isFollowingCount);
 
     return $followings;
+}
+
+/**
+ * Returns comments by post id.
+ *
+ * @param int $postId
+ * @param PDO $pdo
+ *
+ * @return array
+ */
+function getCommentsById(PDO $pdo, int $postId)
+{
+    $statement = $pdo->prepare('SELECT * FROM comments WHERE comments.post_id = :id ORDER BY date_posted DESC');
+
+    sqlQueryError($pdo, $statement);
+
+    $statement->execute([
+        'id' => $postId,
+    ]);
+
+    $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    return $comments;
 }

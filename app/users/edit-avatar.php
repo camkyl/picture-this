@@ -1,25 +1,26 @@
 <?php
+
 // Back-end
 // Linked to in edit-profile.php (front-end)
 
 declare(strict_types=1);
 
-require __DIR__ . '/../autoload.php';
+require __DIR__.'/../autoload.php';
 
 // In this file we edit users avatar
 
 if (isset($_FILES['avatar'])) {
     // die(var_dump($_FILES['avatar']));
-    // array(5) { 
-    // ["name"]=> string(7) "hej.jpg" 
-    // ["type"]=> string(10) "image/jpeg" 
-    // ["tmp_name"]=> string(66) "/private/var/folders/dp/f8nxyp614sn4n6yxjy7dzcgc0000gn/T/phpjXJga1" 
-    // ["error"]=> int(0) 
+    // array(5) {
+    // ["name"]=> string(7) "hej.jpg"
+    // ["type"]=> string(10) "image/jpeg"
+    // ["tmp_name"]=> string(66) "/private/var/folders/dp/f8nxyp614sn4n6yxjy7dzcgc0000gn/T/phpjXJga1"
+    // ["error"]=> int(0)
     // ["size"]=> int(23940) }
-    $avatar =  $_FILES['avatar'];
+    $avatar = $_FILES['avatar'];
     $fileExtension = pathinfo($avatar['name'])['extension'];
-    $fileName = GUID() . '.' . $fileExtension;
-    $destination = __DIR__ . '/avatar/' . $fileName;
+    $fileName = GUID().'.'.$fileExtension;
+    $destination = __DIR__.'/avatar/'.$fileName;
     $id = $_SESSION['user']['id'];
 
     // Only .png and .jpg files are allowed.
@@ -49,7 +50,7 @@ if (isset($_FILES['avatar'])) {
     // Binding parameters with variables and running the script
     $statement->execute([
         ':avatar' => $fileName,
-        ':id' => $id,
+        ':id'     => $id,
     ]);
 
     $selectingUser = $pdo->prepare('SELECT avatar FROM users WHERE id = :id');

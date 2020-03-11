@@ -1,4 +1,5 @@
 <?php
+
 // is required in header.php
 
 declare(strict_types=1);
@@ -13,10 +14,10 @@ date_default_timezone_set('UTC');
 mb_internal_encoding('UTF-8');
 
 // Include the helper functions.
-require __DIR__ . '/functions.php';
+require __DIR__.'/functions.php';
 
 // Fetch the global configuration array.
-$configuration = require __DIR__ . '/configuration.php';
+$configuration = require __DIR__.'/configuration.php';
 
 // Setup the database connection.
 $pdo = new PDO($configuration['database_path']);

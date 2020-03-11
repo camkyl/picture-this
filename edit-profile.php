@@ -1,9 +1,9 @@
 <?php
 // Front-end
 
-require __DIR__ . '/views/header.php';
+require __DIR__.'/views/header.php';
 
-require __DIR__ . '/views/navigation.php';
+require __DIR__.'/views/navigation.php';
 
 isLoggenIn();
 
@@ -11,7 +11,7 @@ isLoggenIn();
 
 <section class="edit-profile">
     <div class="profile__personal flex-col">
-        <?php if (isset($_SESSION['errors'][0])) : ?>
+        <?php if (isset($_SESSION['errors'][0])) { ?>
             <div class="message">
                 <p class="edit-p">
                     <?php
@@ -19,7 +19,7 @@ isLoggenIn();
                     ?>
                 </p>
             </div>
-        <?php elseif (isset($_SESSION['messages'][0])) : ?>
+        <?php } elseif (isset($_SESSION['messages'][0])) { ?>
             <div class="message">
                 <p class="edit-p">
                     <?php
@@ -27,16 +27,16 @@ isLoggenIn();
                     ?>
                 </p>
             </div>
-        <?php endif; ?>
+        <?php } ?>
 
         <form action="/app/users/edit-avatar.php" method="post" enctype="multipart/form-data" class="flex-col-cen">
             <h3 class>Edit profile picture:</h3>
             <div class="profile__image">
-                <?php if ($_SESSION['user']['avatar'] === null) : ?>
+                <?php if ($_SESSION['user']['avatar'] === null) { ?>
                     <img src="/app/users/avatar/placeholder2.png" alt="Profile picture">
-                <?php else : ?>
+                <?php } else { ?>
                     <img src="/app/users/avatar/<?php echo $_SESSION['user']['avatar']; ?>">
-                <?php endif; ?>
+                <?php } ?>
             </div>
 
             <div class="profile__image-edit">
@@ -86,6 +86,6 @@ isLoggenIn();
 
 <?php
 
-require __DIR__ . '/views/footer.php';
+require __DIR__.'/views/footer.php';
 
 ?>

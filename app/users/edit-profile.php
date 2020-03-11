@@ -1,10 +1,11 @@
 <?php
+
 // Back-end
 // Linked to in edit-profile.php (front-end)
 
 declare(strict_types=1);
 
-require __DIR__ . '/../autoload.php';
+require __DIR__.'/../autoload.php';
 
 // In this file we edit users account email, password and biography.
 
@@ -30,16 +31,16 @@ if (isset($_POST['first-name'], $_POST['last-name'], $_POST['biography'])) {
     // Binding parameters with variables and running the script
     $statement->execute([
         ':updatedFirstName' => $updatedFirstName,
-        ':updatedLastName' => $updatedLastName,
+        ':updatedLastName'  => $updatedLastName,
         ':updatedBiography' => $updatedBiography,
-        ':id' => $id
+        ':id'               => $id,
     ]);
 
     // Preparing SQL query to fetch the updated user information
     $statementtwo = $pdo->prepare('SELECT first_name, last_name, biography FROM users WHERE id = :id');
 
     $statementtwo->execute([
-        ':id' => $id
+        ':id' => $id,
     ]);
 
     $fetchNewUserInfo = $statementtwo->fetch(PDO::FETCH_ASSOC);

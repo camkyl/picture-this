@@ -1,19 +1,12 @@
 <?php
 
 require __DIR__.'/views/header.php';
-
 require __DIR__.'/views/navigation.php';
 
-isLoggenIn();
-
-$userId = (int) $_SESSION['user']['id'];
-
-$user = getUserById((int) $userId, $pdo);
-
-$postId = $_GET['id'];
-
-$viewingPost = getPostByID($pdo, (int) $postId);
-
+if (isset($_POST['id'])) {
+    $postId = $_POST['id'];
+    $viewingPost = getPostAndUserById($pdo, (int) $postId);
+}
 ?>
 
 <section class="view-post">
@@ -38,15 +31,13 @@ $viewingPost = getPostByID($pdo, (int) $postId);
     <div class="feed__post">
         <div class="post__header bblg w-full">
             <div class="post__header-profile">
-                <img src="/app/users/avatar/<?php echo $user['avatar']; ?>" alt="avatar">
-                <h4><?php echo $user['first_name'].' '.$user['last_name']; ?></h4>
+                <img src="/app/users/avatar/<?php echo $viewingPost['avatar']; ?>" alt="avatar">
+                <h4><?php echo $viewingPost['first_name'].' '.$viewingPost['last_name']; ?></h4>
             </div>
 
             <div class="post__header-edit">
-                <?php if ($userId == $viewingPost['user_id']) { ?>
                     <!--Edit post-button - shown if the post belongs to the user-->
                     <a href="/edit-post.php?id=<?php echo $viewingPost['id']; ?>" title="Edit post"><button>Edit</button></a>
-                <?php } ?>
             </div>
         </div>
 
@@ -55,7 +46,7 @@ $viewingPost = getPostByID($pdo, (int) $postId);
         </div>
 
         <?php
-        $likedPost = userHasLiked($pdo, (int) $userId, (int) $postId);
+        $likedPost = userHasLiked($pdo, (int) $viewingPost['user_id'], (int) $viewingPost['id']);
         $userThatHasLiked = $likedPost['liked_by_user_id'];
         ?>
         <div class="post__text-content">
@@ -63,7 +54,7 @@ $viewingPost = getPostByID($pdo, (int) $postId);
                 <div class="flex">
                     <form action="/app/posts/like.php" method="post">
                         <button class="like-button" name="like-post" value="<?php echo $viewingPost['id']; ?>">
-                            <?php if ($userThatHasLiked == $userId) { ?>
+                            <?php if ($userThatHasLiked == $viewingPost['user_id']) { ?>
                                 <img src="/views/icons/liked.svg" alt="Post is liked">
                             <?php } else { ?>
                                 <img src="/views/icons/heart.svg" alt="Post is not liked">
@@ -100,7 +91,7 @@ $viewingPost = getPostByID($pdo, (int) $postId);
             </div>
 
             <div class="post__caption w-full">
-                <h5><?php echo $user['first_name'].' '.$user['last_name']; ?></h5>
+                <h5><?php echo $viewingPost['first_name'].' '.$viewingPost['last_name']; ?></h5>
                 <p><?php echo $viewingPost['post_caption']; ?></p>
             </div>
 
@@ -110,6 +101,13 @@ $viewingPost = getPostByID($pdo, (int) $postId);
         </div>
     </div>
 </section>
+
+
+
+
+
+
+
 
 <?php
 

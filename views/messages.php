@@ -1,10 +1,11 @@
 <?php
+
 // Is required in - STILL WORKING ON
 
 $_SESSION['messages'][] = [
-    'wrong email' => 'You entered the wrong email!',
+    'wrong email'      => 'You entered the wrong email!',
     'successful login' => 'You are now logged in!',
-    'email exists' => 'There is already an account registered on this email',
+    'email exists'     => 'There is already an account registered on this email',
 ];
 
 // <div>
