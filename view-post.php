@@ -1,8 +1,8 @@
 <?php
 
-require __DIR__ . '/views/header.php';
+require __DIR__.'/views/header.php';
 
-require __DIR__ . '/views/navigation.php';
+require __DIR__.'/views/navigation.php';
 
 isLoggenIn();
 
@@ -17,7 +17,7 @@ $viewingPost = getPostByID($pdo, (int) $postId);
 ?>
 
 <section class="view-post">
-    <?php if (isset($_SESSION['errors'][0])) : ?>
+    <?php if (isset($_SESSION['errors'][0])) { ?>
         <div class="message">
             <p>
                 <?php
@@ -25,7 +25,7 @@ $viewingPost = getPostByID($pdo, (int) $postId);
                 ?>
             </p>
         </div>
-    <?php elseif (isset($_SESSION['messages'][0])) : ?>
+    <?php } elseif (isset($_SESSION['messages'][0])) { ?>
         <div class="message">
             <p>
                 <?php
@@ -33,25 +33,25 @@ $viewingPost = getPostByID($pdo, (int) $postId);
                 ?>
             </p>
         </div>
-    <?php endif; ?>
+    <?php } ?>
 
     <div class="feed__post">
         <div class="post__header bblg w-full">
             <div class="post__header-profile">
                 <img src="/app/users/avatar/<?php echo $user['avatar']; ?>" alt="avatar">
-                <h4><?php echo $user['first_name'] . ' ' . $user['last_name']; ?></h4>
+                <h4><?php echo $user['first_name'].' '.$user['last_name']; ?></h4>
             </div>
 
             <div class="post__header-edit">
-                <?php if ($userId == $viewingPost['user_id']) : ?>
+                <?php if ($userId == $viewingPost['user_id']) { ?>
                     <!--Edit post-button - shown if the post belongs to the user-->
                     <a href="/edit-post.php?id=<?php echo $viewingPost['id']; ?>" title="Edit post"><button>Edit</button></a>
-                <?php endif; ?>
+                <?php } ?>
             </div>
         </div>
 
         <div class="post__image">
-            <img src="/app/posts/uploads/<?php echo $viewingPost['post_image'];  ?>" alt="Post image">
+            <img src="/app/posts/uploads/<?php echo $viewingPost['post_image']; ?>" alt="Post image">
         </div>
 
         <?php
@@ -63,11 +63,11 @@ $viewingPost = getPostByID($pdo, (int) $postId);
                 <div class="flex">
                     <form action="/app/posts/like.php" method="post">
                         <button class="like-button" name="like-post" value="<?php echo $viewingPost['id']; ?>">
-                            <?php if ($userThatHasLiked == $userId) : ?>
+                            <?php if ($userThatHasLiked == $userId) { ?>
                                 <img src="/views/icons/liked.svg" alt="Post is liked">
-                            <?php else : ?>
+                            <?php } else { ?>
                                 <img src="/views/icons/heart.svg" alt="Post is not liked">
-                            <?php endif; ?>
+                            <?php } ?>
                         </button>
                     </form>
 
@@ -88,19 +88,19 @@ $viewingPost = getPostByID($pdo, (int) $postId);
                 <?php
                 $likes = numberOfLikes($pdo, (int) $postId);
                 ?>
-                <?php foreach ($likes as $like) : ?>
-                    <?php if ($like == 0) : ?>
+                <?php foreach ($likes as $like) { ?>
+                    <?php if ($like == 0) { ?>
                         <h5>Be the first one to like this post</h5>
-                    <?php elseif ($like == 1) : ?>
+                    <?php } elseif ($like == 1) { ?>
                         <h5><?php echo $like; ?> person likes this</h5>
-                    <?php else : ?>
+                    <?php } else { ?>
                         <h5><?php echo $like; ?> people likes this</h5>
-                    <?php endif; ?>
-                <?php endforeach; ?>
+                    <?php } ?>
+                <?php } ?>
             </div>
 
             <div class="post__caption w-full">
-                <h5><?php echo $user['first_name'] . ' ' . $user['last_name']; ?></h5>
+                <h5><?php echo $user['first_name'].' '.$user['last_name']; ?></h5>
                 <p><?php echo $viewingPost['post_caption']; ?></p>
             </div>
 
@@ -112,7 +112,7 @@ $viewingPost = getPostByID($pdo, (int) $postId);
 </section>
 
 <?php
- 
-require __DIR__ . '/views/footer.php';
+
+require __DIR__.'/views/footer.php';
 
 ?>

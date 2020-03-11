@@ -1,9 +1,9 @@
 <?php
 // Front-end
 
-require __DIR__ . '/views/header.php';
+require __DIR__.'/views/header.php';
 
-require __DIR__ . '/views/navigation.php';
+require __DIR__.'/views/navigation.php';
 
 isLoggenIn();
 
@@ -16,7 +16,7 @@ $user = getUserById((int) $userId, $pdo);
 ?>
 
 <section class="profile">
-    <?php if (isset($_SESSION['errors'][0])) : ?>
+    <?php if (isset($_SESSION['errors'][0])) { ?>
         <div class="message">
             <p>
                 <?php
@@ -24,7 +24,7 @@ $user = getUserById((int) $userId, $pdo);
                 ?>
             </p>
         </div>
-    <?php elseif (isset($_SESSION['messages'][0])) : ?>
+    <?php } elseif (isset($_SESSION['messages'][0])) { ?>
         <div class="message">
             <p>
                 <?php
@@ -32,15 +32,15 @@ $user = getUserById((int) $userId, $pdo);
                 ?>
             </p>
         </div>
-    <?php endif; ?>
+    <?php } ?>
 
     <div class="profile__intro">
         <div class="profile__image flex-col-cen">
-            <?php if ($_SESSION['user']['avatar'] === null) : ?>
+            <?php if ($_SESSION['user']['avatar'] === null) { ?>
                 <img src="/app/users/avatar/placeholder2.png" alt="Profile picture">
-            <?php else : ?>
+            <?php } else { ?>
                 <img src="/app/users/avatar/<?php echo $_SESSION['user']['avatar']; ?>">
-            <?php endif; ?>
+            <?php } ?>
         </div>
 
         <h3 class="profile__name flex-cen">
@@ -84,35 +84,35 @@ $user = getUserById((int) $userId, $pdo);
             </p>
         </div>
 
-        <?php if (isset($userId)) : ?>
+        <?php if (isset($userId)) { ?>
             <div class="profile__edit flex-cen">
                 <a class="" href="/edit-profile.php">Edit profile</a>
             </div>
-        <?php else : ?>
+        <?php } else { ?>
             <div class="profile__follow">
                 <form action="/app/users/follow.php" method="post">
                     <button name="follow" value="<?php echo $user['id']; ?>">Follow</button>
                 </form>
             </div>
-        <?php endif; ?>
+        <?php } ?>
     </div>
 
     <div class="profile__posts">
-        <?php //var_dump(getPostsByUser($pdo, (int) $userId)); 
+        <?php //var_dump(getPostsByUser($pdo, (int) $userId));
         ?>
         <?php $postByUser = getPostsByUser($pdo, (int) $userId); ?>
-        <?php foreach ($postByUser as $postImage) : ?>
+        <?php foreach ($postByUser as $postImage) { ?>
             <div class="profile__posts-image">
                 <a href="view-post.php?id=<?php echo $postImage['id']; ?>" title="View post">
                     <img src="/app/posts/uploads/<?php echo $postImage['post_image']; ?>">
                 </a>
             </div>
-        <?php endforeach; ?>
+        <?php } ?>
     </div>
 </section>
 
 <?php
 
-require __DIR__ . '/views/footer.php';
+require __DIR__.'/views/footer.php';
 
 ?>

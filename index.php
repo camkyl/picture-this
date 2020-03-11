@@ -1,24 +1,21 @@
 <?php
 
-require __DIR__ . '/views/header.php';
+require __DIR__.'/views/header.php';
 
-require __DIR__ . '/views/navigation.php';
+require __DIR__.'/views/navigation.php';
 
 isLoggenIn();
 
 // Logged in user:
 $userId = (int) $_SESSION['user']['id'];
 
-
-
 $user = getUserById((int) $userId, $pdo);
-
 
 ?>
 
 <main>
     <section class="feed">
-        <?php if (isset($_SESSION['errors'][0])) : ?>
+        <?php if (isset($_SESSION['errors'][0])) { ?>
             <div class="message">
                 <p>
                     <?php
@@ -26,7 +23,7 @@ $user = getUserById((int) $userId, $pdo);
                     ?>
                 </p>
             </div>
-        <?php elseif (isset($_SESSION['messages'][0])) : ?>
+        <?php } elseif (isset($_SESSION['messages'][0])) { ?>
             <div class="message">
                 <p>
                     <?php
@@ -34,39 +31,37 @@ $user = getUserById((int) $userId, $pdo);
                     ?>
                 </p>
             </div>
-        <?php endif; ?>
+        <?php } ?>
 
         <?php
         $posts = getAllPosts($pdo);
-        foreach ($posts as $post) :
+        foreach ($posts as $post) {
             $postId = $post['id'];
-            $postUser = (int) $post['user_id'];
-        ?>
+            $postUser = (int) $post['user_id']; ?>
             <div class="feed__post">
                 <div class="post__header bblg w-full">
                     <div class="post__header-profile">
-                        <?php if ($post['avatar']) : ?>
+                        <?php if ($post['avatar']) { ?>
                             <img src="/app/users/avatar/<?php echo $post['avatar']; ?>" alt="Profile image">
-                        <?php else : ?>
+                        <?php } else { ?>
                             <img src="/app/users/avatar/placeholder2.png">
-                        <?php endif; ?>
-                        <h4><?php echo $post['first_name'] . ' ' . $post['last_name']; ?></h4>
+                        <?php } ?>
+                        <h4><?php echo $post['first_name'].' '.$post['last_name']; ?></h4>
                     </div>
 
                     <?php
-                    isFollowing($pdo, (int) $userId, (int) $postUser);
-                    ?>
+                    isFollowing($pdo, (int) $userId, (int) $postUser); ?>
                     <div class="profile__follow">
                         <form action="/app/users/follow.php" method="post">
                             <input type="hidden" name="following" value="<?php echo $postUser; ?>"></input>
                             <!--Only view follow/unfollow button on other users-->
-                            <?php if ($_SESSION['user']['id'] != $postUser) : ?>
-                                <?php if (isFollowing($pdo, (int) $userId, (int) $postUser)) : ?>
+                            <?php if ($_SESSION['user']['id'] != $postUser) { ?>
+                                <?php if (isFollowing($pdo, (int) $userId, (int) $postUser)) { ?>
                                     <button name="follower" value="<?php echo $userId; ?>">Unfollow</button>
-                                <?php elseif (!isFollowing($pdo, (int) $userId, (int) $postUser)) : ?>
+                                <?php } elseif (!isFollowing($pdo, (int) $userId, (int) $postUser)) { ?>
                                     <button name="follower" value="<?php echo $userId; ?>">Follow</button>
-                                <?php endif; ?>
-                            <?php endif; ?>
+                                <?php } ?>
+                            <?php } ?>
                         </form>
                     </div>
                 </div>
@@ -78,18 +73,17 @@ $user = getUserById((int) $userId, $pdo);
 
                 <?php
                 $likedPost = userHasLiked($pdo, (int) $userId, (int) $postId);
-                $userThatHasLiked = $likedPost['liked_by_user_id'];
-                ?>
+            $userThatHasLiked = $likedPost['liked_by_user_id']; ?>
                 <div class="post__text-content">
                     <div class="post__text-content-header w-full">
                         <div class="flex">
                             <form action="/app/posts/like.php" method="post">
                                 <button class="like-button" name="like-post" value="<?php echo $post['id']; ?>">
-                                    <?php if ($userThatHasLiked == $userId) : ?>
+                                    <?php if ($userThatHasLiked == $userId) { ?>
                                         <img src="/views/icons/liked.svg" alt="Post is liked">
-                                    <?php else : ?>
+                                    <?php } else { ?>
                                         <img src="/views/icons/heart.svg" alt="Post is not liked">
-                                    <?php endif; ?>
+                                    <?php } ?>
                                 </button>
                             </form>
 
@@ -100,29 +94,27 @@ $user = getUserById((int) $userId, $pdo);
                             <p>
                                 <?php
                                 $postedDate = $post['date'];
-                                echo postedAgo($postedDate);
-                                ?>
+            echo postedAgo($postedDate); ?>
                             </p>
                         </div>
                     </div>
 
                     <div class="number-of-likes">
                         <?php
-                        $likes = numberOfLikes($pdo, (int) $postId);
-                        ?>
-                        <?php foreach ($likes as $like) : ?>
-                            <?php if ($like == 0) : ?>
+                        $likes = numberOfLikes($pdo, (int) $postId); ?>
+                        <?php foreach ($likes as $like) { ?>
+                            <?php if ($like == 0) { ?>
                                 <h5>Be the first one to like this post</h5>
-                            <?php elseif ($like == 1) : ?>
+                            <?php } elseif ($like == 1) { ?>
                                 <h5><?php echo $like; ?> person likes this</h5>
-                            <?php else : ?>
+                            <?php } else { ?>
                                 <h5><?php echo $like; ?> people likes this</h5>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
+                            <?php } ?>
+                        <?php } ?>
                     </div>
 
                     <div class="post__caption w-full">
-                        <h5><?php echo $post['first_name'] . ' ' . $post['last_name']; ?></h5>
+                        <h5><?php echo $post['first_name'].' '.$post['last_name']; ?></h5>
                         <p><?php echo $post['post_caption']; ?></p>
                     </div>
 
@@ -146,9 +138,9 @@ $user = getUserById((int) $userId, $pdo);
                     <div class="comment-container">
                         
                         <div class="comments-posted">
-                            <?php $comments = getCommentsById($pdo, (int) $postId);?>
-                            <?php if ($comments): ?>
-                                <?php foreach ($comments as $comment): ?>
+                            <?php $comments = getCommentsById($pdo, (int) $postId); ?>
+                            <?php if ($comments) { ?>
+                                <?php foreach ($comments as $comment) { ?>
 
                                     <div class="comment-containers">
                                         <div class="username-comment">
@@ -157,7 +149,7 @@ $user = getUserById((int) $userId, $pdo);
                                         </div>
 
                                     <div class="username-comment">   
-                                        <?php if ($user['first_name'] == $comment['username']): ?>
+                                        <?php if ($user['first_name'] == $comment['username']) { ?>
 
                                             <form action="/app/posts/edit-comment.php" method="post">
                                                 <input type="hidden" name="post-id-edit" value="<?php echo $comment['comment_id']; ?>">
@@ -170,13 +162,13 @@ $user = getUserById((int) $userId, $pdo);
                                                 <button type="submit">Delete</button>
                                             </form>
 
-                                        <?php endif; ?>
+                                        <?php } ?>
                                         
                                     </div>
                                 </div>
 
-                            <?php endforeach; ?>
-                        <?php endif; ?>
+                            <?php } ?>
+                        <?php } ?>
 
                         </div>
 
@@ -187,8 +179,9 @@ $user = getUserById((int) $userId, $pdo);
                     <p id="output"></p>
                 </div>
             </div>
-        <?php endforeach; ?>
+        <?php
+        } ?>
     </section>
 </main>
 
-<?php require __DIR__ . '/views/footer.php'; ?>
+<?php require __DIR__.'/views/footer.php'; ?>

@@ -1,9 +1,10 @@
 <?php
+
 // Back-end
 
 declare(strict_types=1);
 
-require __DIR__ . '/../autoload.php';
+require __DIR__.'/../autoload.php';
 
 // In this file we upload users posts to the database
 
@@ -11,8 +12,8 @@ if (isset($_FILES['post-image'], $_POST['post-caption'])) {
     $image = $_FILES['post-image'];
     $caption = filter_var($_POST['post-caption'], FILTER_SANITIZE_STRING);
     $fileExtension = pathinfo($image['name'])['extension'];
-    $fileName = GUID() . '.' . $fileExtension;
-    $destination = __DIR__ . '/uploads/' . $fileName;
+    $fileName = GUID().'.'.$fileExtension;
+    $destination = __DIR__.'/uploads/'.$fileName;
     $id = $_SESSION['user']['id'];
 
     // Only .png and .jpg files are allowed.
@@ -33,7 +34,7 @@ if (isset($_FILES['post-image'], $_POST['post-caption'])) {
     // Connection to database is made in autoload.php and saved in the variable $pdo
 
     // Preparing SQL query to insert post to database
-    $statement = $pdo->prepare("INSERT INTO posts (post_image, post_caption, user_id) VALUES (:filename, :caption, :user_id)");
+    $statement = $pdo->prepare('INSERT INTO posts (post_image, post_caption, user_id) VALUES (:filename, :caption, :user_id)');
 
     if (!$statement) {
         die(var_dump($pdo->errorInfo()));
@@ -42,8 +43,8 @@ if (isset($_FILES['post-image'], $_POST['post-caption'])) {
     // Binding parameters with variables and running the script
     $statement->execute([
         ':filename' => $fileName,
-        ':caption' => $caption,
-        ':user_id' => $id
+        ':caption'  => $caption,
+        ':user_id'  => $id,
     ]);
 
     $_SESSION['messages'][] = 'Your post was successfully uploaded!';

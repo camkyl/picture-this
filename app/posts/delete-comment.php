@@ -1,10 +1,9 @@
-<?php 
+<?php
 
-require __DIR__ . '/../autoload.php';
+require __DIR__.'/../autoload.php';
 
 if (isset($_POST['post-id-delete'])) {
-    
-     $postId = $_POST['post-id-delete'];
+    $postId = $_POST['post-id-delete'];
 
     $statement = $pdo->prepare('DELETE FROM comments WHERE comment_id = :id');
 
@@ -13,6 +12,5 @@ if (isset($_POST['post-id-delete'])) {
     $statement->execute([
         'id' => $postId,
     ]);
-
-};
+}
 redirect('/');

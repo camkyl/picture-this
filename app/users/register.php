@@ -1,9 +1,10 @@
 <?php
+
 // Back-end
 
 declare(strict_types=1);
 
-require __DIR__ . '/../autoload.php';
+require __DIR__.'/../autoload.php';
 
 // In this file we register users
 
@@ -32,7 +33,7 @@ if (isset($_POST['first-name'], $_POST['last-name'], $_POST['email'], $_POST['pa
     // Array with user information from input field
     $isEmailExisting = $statement->fetch(PDO::FETCH_ASSOC);
 
-    // Email already exists in database 
+    // Email already exists in database
     if ($isEmailExisting['email'] === $email) {
         // Error message printed in register.php (front-end) and user redirected back to register page
         $_SESSION['errors'][] = 'An account with the email entered already exists. Please log in or register with another email.';
@@ -51,9 +52,9 @@ if (isset($_POST['first-name'], $_POST['last-name'], $_POST['email'], $_POST['pa
     // Binding parameters with variables and running the script
     $registration->execute([
         ':first_name' => $firstName,
-        ':last_name' => $lastName,
-        ':email' => $email,
-        ':password' => $hashedPassword
+        ':last_name'  => $lastName,
+        ':email'      => $email,
+        ':password'   => $hashedPassword,
     ]);
 
     redirect('/index.php');

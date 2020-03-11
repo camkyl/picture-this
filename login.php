@@ -1,7 +1,7 @@
 <?php
 // Front-end
 
-require __DIR__ . '/views/header.php';
+require __DIR__.'/views/header.php';
 
 ?>
 
@@ -13,7 +13,7 @@ require __DIR__ . '/views/header.php';
         <h1>Log in</h1>
 
         <form action="/app/users/login.php" method="post" class="log-in-form">
-            <?php if (isset($_SESSION['errors'][0])) : ?>
+            <?php if (isset($_SESSION['errors'][0])) { ?>
                 <div class="message">
                     <!--Error message-->
                     <p>
@@ -22,7 +22,7 @@ require __DIR__ . '/views/header.php';
                         ?>
                     </p>
                 </div>
-            <?php endif; ?>
+            <?php } ?>
 
             <div class="log-in-form__group flex-col">
                 <label for="email">Email</label>

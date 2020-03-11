@@ -1,10 +1,11 @@
 <?php
+
 // Back-end
 // Linked to in edit-profile.php (front-end)
 
 declare(strict_types=1);
 
-require __DIR__ . '/../autoload.php';
+require __DIR__.'/../autoload.php';
 
 // In this file we delete a user and its information from the database
 
@@ -19,7 +20,7 @@ if (isset($_POST['delete-account'])) {
     sqlQueryError($pdo, $statement);
 
     $statement->execute([
-        ':user_id' => $userId
+        ':user_id' => $userId,
     ]);
 
     // Deleting posts from user
@@ -28,7 +29,7 @@ if (isset($_POST['delete-account'])) {
     sqlQueryError($pdo, $statement);
 
     $statement->execute([
-        ':user_id' => $userId
+        ':user_id' => $userId,
     ]);
 
     // Deleting likes from user
@@ -37,7 +38,7 @@ if (isset($_POST['delete-account'])) {
     sqlQueryError($pdo, $statement);
 
     $statement->execute([
-        ':user_id' => $userId
+        ':user_id' => $userId,
     ]);
 
     // Deleting followings from user
@@ -46,7 +47,7 @@ if (isset($_POST['delete-account'])) {
     sqlQueryError($pdo, $statement);
 
     $statement->execute([
-        ':user_id' => $userId
+        ':user_id' => $userId,
     ]);
 
     redirect('/register.php');
