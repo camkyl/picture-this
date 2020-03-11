@@ -1,5 +1,7 @@
 # Picture This :selfie:
 
+[![StyleCI](https://github.styleci.io/repos/228235911/shield?branch=master)](https://github.styleci.io/repos/228235911)
+
 <img src="https://media.giphy.com/media/3E2PjzNzMVCwrXnXwC/giphy.gif" width="100%">
 
 ## Description
